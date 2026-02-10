@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DEALKART</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="manifest.json">
+
+<style>
+body{margin:0;font-family:Arial;background:#cac7a5}
+
+/* HEADER */
+header{
+position:fixed;top:0;width:100%;height:65px;z-index:100;
+background:#2209c2;padding:0 15px;
+display:flex;align-items:center;justify-content:space-between;
+}
+header img{height:45px;border-radius:50%;border: 3px solid #f7f3f3}
+.brand-name{color:#f4d407;font-size:20px;font-weight:900;letter-spacing: 2px;/* --- NEW TEXT SHADOW --- */ text-shadow: 2px 2px 4px rgba(0,0,0,0.5);}
+#userTop{color:#edf57f;font-weight:bold;cursor:pointer;margin-right:25px}
+
+/* MAIN */
+.main{padding-top:70px;padding-bottom:120px}
+
+/* SEARCH */
+.search-wrapper{padding:10px}
+.search-input {
+    width: 90%; padding: 12px; border: none; border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); outline: none;
+}
+
+/* VALENTINE FLIPKART STYLE SECTION */
+.v-container {
+    background: #fff; margin: 10px; border-radius: 10px; overflow: hidden;
+    border: 2px solid #eb1115;
+}
+.v-header {
+    background: #ff416c; color: #fff; padding: 8px; text-align: center;
+    font-weight: bold; font-size: 14px;
+}
+.v-scroll {
+    display: flex; overflow-x: auto; padding: 10px; gap: 15px;
+}
+.v-item {
+    min-width: 100px; text-align: center;
+}
+.v-item img {
+    width: 80px; height: 80px; border-radius: 10px; object-fit: cover;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.v-item p { margin: 5px 0; font-size: 12px; font-weight: bold; color: #d32f2f; }
+
+/* CATEGORY */
+.cat-scroll{display:flex;overflow-x:auto;background:#d81583;padding:10px;margin:0 10px;border-radius:10px}
+.cat-item{min-width:85px;text-align:center;margin-right:10px; font-weight: bold; cursor: pointer;
+/* --- NEW BORDER STYLE --- */
+border: 1px solid #000; /* Black border */
+padding: 8px 10px;border-radius:5px;background: #fff;display:inline-block;
+}
+
+.sub-scroll{display:flex;overflow-x:auto;padding:10px;margin:0 10px}
+.sub-btn{padding:6px 15px;background:#eee;border-radius:20px;margin-right:8px; cursor: pointer;}
+
+/* PRODUCTS */
+#grid_panel{ display:grid; grid-template-columns:1fr 1fr; gap:10px; padding:10px; }
+.prod-card{ background:#fff; border-radius:10px; overflow:hidden; position:relative; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+.prod-img-box{ height:180px; position:relative; }
+
+/* SLIDER */
+.slider{display:flex;overflow-x:auto;scroll-snap-type:x mandatory; scrollbar-width: none;}
+.slider::-webkit-scrollbar {display: none;}
+.slider img{min-width:100%;height:180px;object-fit:cover;scroll-snap-align:start;cursor:pointer}
+
+/* ARROWS - EXACTLY LIKE YOUR ORIGINAL */
+.arrow{
+position:absolute;top:50%;
+transform:translateY(-50%);
+background:rgba(0,0,0,0.5);
+color:#fff;width:30px;height:30px;border-radius:50%;
+display:flex;align-items:center;justify-content:center;
+font-size:18px;cursor:pointer;z-index:5;user-select:none;
+}
+.arrow.left{left:5px}
+.arrow.right{right:5px}
+
+.info-box{padding:15px}
+.price{color:green;font-weight:bold}
+.cut{text-decoration:line-through;color:#f40e0e;font-size:12px}
+.btn-row{display:flex;gap:5px}
+.btn-row button{ flex:1; border:none; padding:8px; background:#2209c2; color:#fff; border-radius:5px; cursor: pointer; }
+
+/* NAV */
+.bottom-nav{ position: fixed; bottom: 0; width: 100%; display: flex; justify-content: space-around; padding: 12px 0; background: #fff; z-index: 100;}
+.bottom-nav div { flex: 1; text-align: center; padding: 10px 0; margin: 5px; border-radius: 10px; cursor: pointer; border: 2px solid transparent;}
+.bottom-nav div:nth-child(1) { border-color: #2209c2; }
+.bottom-nav div:nth-child(2) { border-color: #e91e63; }
+.bottom-nav div:nth-child(3) { border-color: #009688; }
+
+/* PAGES */
+#loginPage, #accountPage{display:none;padding:80px 20px;text-align:center;background:#0d0dde;color:#fff; min-height: 100vh;}
+#loginPage input{width:80%;padding:12px;margin:10px 0;border-radius:8px;border:none}
+#loginPage button{width:85%;padding:12px;background:#2209c2;color:#fff;border:none;border-radius:8px}
+
+#imgViewer{ position:fixed;inset:0;background:#000;display:none;z-index:200; }
+</style>
+</head>
+<body>
+
+<header>
+<img src="https://i.ibb.co/k6Hy4TTP/1770736037665.png">
+<div class="brand-name">DEALKART🛒</div>
+<div id="userTop" onclick="openAccount()">Login</div>
+</header>
+
+<div id="loginPage">
+<h2>Customer Login</h2>
+<input id="custName" placeholder="Enter your name">
+<button onclick="doLogin()">Login / Register</button>
+</div>
+
+<div class="main" id="mainSection">
+    <div class="search-wrapper">
+        <input class="search-input" id="searchInp" placeholder="Search products..." onkeyup="runSearch()">
+    </div>
+
+    <div class="v-container">
+        <div class="v-header">💖 VALENTINE'S SPECIAL DEALS 💖</div>
+        <div class="v-scroll">
+            <div class="v-item" onclick="window.open('#')">
+                <img src="https://i.ibb.co/k2gWNR0c/Screenshot-2026-02-10-17-53-11-326-com-flipkart-android-edit.jpg"><p>brasslate <br>₹180</p>
+            </div>
+            <div class="v-item" onclick="window.open('#')">
+                <img src="https://i.ibb.co/WvX18kvq/Screenshot-2026-02-10-18-31-50-761-com-flipkart-android-edit.jpg"><p>pendant <br>₹169</p>
+            </div>
+            <div class="v-item" onclick="window.open('#')">
+                <img src="https://i.ibb.co/ZppM1Mxf/Screenshot-2026-02-10-18-51-22-784-com-flipkart-android-edit.jpg"><p>Pink Dress <br>₹250</p>
+            </div>
+            <div class="v-item" onclick="window.open('#')">
+                <img src="https://i.ibb.co/0R0pxBb2/Screenshot-2026-02-10-19-16-33-346-com-flipkart-android-edit.jpg"><p>Straightfit jeans <br>₹379</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cat-scroll" id="cat_panel"></div>
+    <div class="sub-scroll" id="sub_panel"></div>
+    <div id="grid_panel"></div>
+</div>
+
+<div id="accountPage">
+<h3 id="accName"></h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px">
+<button onclick="donate()">🎁 Donation</button>
+<button onclick="showWishlist()">🛒 Wishlist</button>
+<button onclick="openInsta()">📷 Instagram</button>
+<button onclick="openTelegram()">➣ Telegram</button>
+<button onclick="openHelp()">🎧 Help Center</button>
+</div>
+<br>
+<button onclick="logout()" style="width:100%;padding:12px;background:#f00;color:#fff;border:none;border-radius:10px">Logout</button>
+</div>
+
+<div id="imgViewer">
+  <div id="closeViewer" onclick="closeViewer()" style="position:absolute;top:10px;right:15px;color:#fff;font-size:22px;z-index:101;cursor:pointer;">✖</div>
+  <div class="slider" id="viewerSlider" style="height:100vh;"></div>
+</div>
+
+<div class="bottom-nav">
+<div onclick="resetHome()">🏠 Home</div>
+<div onclick="showWishlist()">🛒 Wishlist</div>
+<div onclick="openAccount()">👤 Account</div>
+</div>
+
+<script>
+/* DATABASE - ADDED VALENTINE CATEGORY */
+const DB_CATS=[
+{name:"Valentines Deals"},
+{name:"For You"},
+{name:"Fashion",sub:["Men","Women","Mens Footwear","Womens Footwear","Mens Accessories","Womens Accessories"]},
+{name:"Sunglasses"},
+{name:"Bags"},
+{name:"Electronics",sub:["Accessories","Watches","Desktops"]}
+];
+
+const DB_ITEMS=[
+/* VALENTINE PRODUCTS */
+{ id:101,name:"Brass diamond brass bangle pack of 4",cat:"Valentines Deals",price:180,cut:999,link:"https://fktr.in/lvQn2EN",
+imgs:["https://i.ibb.co/k2gWNR0c/Screenshot-2026-02-10-17-53-11-326-com-flipkart-android-edit.jpg", 
+      "https://i.ibb.co/LXQdDdv4/Screenshot-2026-02-10-17-53-21-079-com-flipkart-android-edit.jpg"]},
+{ id:102,name:"Casual green crystal heart pendant chain for women",cat:"Valentines Deals",price:169,cut:1599,link:"https://fktr.in/JVaMusf",
+imgs:["https://i.ibb.co/WvX18kvq/Screenshot-2026-02-10-18-31-50-761-com-flipkart-android-edit.jpg","https://i.ibb.co/QvHHjr6V/Screenshot-2026-02-10-18-32-04-364-com-flipkart-android-edit.jpg"]},
+{ id:103,name:"Women pink dress",cat:"Valentines Deals",price:250,cut:1999,link:"https://fktr.in/Tevi8hW",
+imgs:["https://i.ibb.co/ZppM1Mxf/Screenshot-2026-02-10-18-51-22-784-com-flipkart-android-edit.jpg","https://i.ibb.co/fzxZFs4g/Screenshot-2026-02-10-18-52-15-656-com-flipkart-android-edit.jpg"]},
+{ id:104,name:"Men's straight fit Mid raise gray jeans",cat:"Valentines Deals",price:379,cut:2920,link:"https://fktr.in/29Fpld8",
+imgs:["https://i.ibb.co/0R0pxBb2/Screenshot-2026-02-10-19-16-33-346-com-flipkart-android-edit.jpg","https://i.ibb.co/SDmznvsD/Screenshot-2026-02-10-19-17-10-787-com-flipkart-android-edit.jpg"]},
+{ id:105,name:"Zircon silver plated ring l lifetime plating with 6 months warranty",cat:"Valentines Deals",price:1364,cut:3749,link:"https://fktr.in/5k6AcEy",
+imgs:["https://i.ibb.co/PZWGMj5J/Screenshot-2026-02-10-21-53-59-522-com-flipkart-android-edit.jpg","https://i.ibb.co/wr08n43s/Screenshot-2026-02-10-21-54-23-990-com-flipkart-android-edit.jpg","https://i.ibb.co/rGgcbZpv/Screenshot-2026-02-10-21-54-36-690-com-flipkart-android-edit.jpg"]},
+/* YOUR ORIGINAL PRODUCTS */
+{ id:1,name:"Premium Backpack Encrypted",cat:"Bags",price:322,cut:999,link:"https://bitli.in/JZizUxb",
+imgs:["https://i.ibb.co/gZVV8M7K/Screenshot-2026-01-28-09-16-20-919-com-flipkart-shopsy-edit.jpg","https://i.ibb.co/d0LnRpXs/Screenshot-2026-01-28-09-17-19-979-com-flipkart-shopsy-edit.jpg","https://i.ibb.co/tkxs7w0/IMG-20260128-215957.jpg"]},
+{ id:2,name:"MEN Full sleeve sweatshirt",cat:"Fashion",sub:"Men",price:299,cut:1499,link:"https://fktr.in/trid8uL",
+imgs:["https://i.ibb.co/zH2qJBLK/Screenshot-2026-01-28-23-27-52-532-com-flipkart-android-edit.jpg","https://i.ibb.co/Y9dMqkg/Screenshot-2026-01-28-23-28-05-482-com-flipkart-android-edit.jpg"]},
+{ id:3,name:"Women Floral Kurti",cat:"Fashion",sub:"Women",price:253,cut:1999,link:"https://bitli.in/mYd26le",
+imgs:["https://i.ibb.co/jvnM1DvY/Screenshot-2026-01-28-20-42-57-901-com-flipkart-shopsy-edit.jpg","https://i.ibb.co/dw8Z04GJ/Screenshot-2026-01-28-20-43-10-575-com-flipkart-shopsy-edit.jpg"]},
+{ id:4,name:"Men Regular Fit Trousers",cat:"Fashion",sub:"Men",price:262,cut:999,link:"https://bitli.in/w8hSXkv",
+imgs:["https://i.ibb.co/xKgxySx2/Screenshot-2026-01-28-20-51-16-478-com-flipkart-android-edit.jpg"]},
+{ id:5,name:"men cotton blend shirt & pant",cat:"Fashion",sub:"Men",price:651,cut:1499,link:"https://fktr.in/87AGO3b",
+imgs:["https://i.ibb.co/DD7xqdDg/Screenshot-2026-01-30-01-40-41-023-com-flipkart-android-edit.jpg","https://i.ibb.co/gb0HtCVp/Screenshot-2026-01-30-01-41-11-619-com-flipkart-android-edit.jpg"]},
+{ id:6,name:"REDTAPE Lifestyle sneakers",cat:"Fashion",sub:"Mens Footwear",price:1133,cut:6299,link:"https://fktr.in/RAzpohc",
+imgs:["https://i.ibb.co/r2ng1690/Screenshot-2026-01-31-19-50-24-989-com-flipkart-android-edit.jpg","https://i.ibb.co/twHD626D/Screenshot-2026-01-31-19-51-16-448-com-flipkart-android-edit.jpg"]},
+{ id:7,name:"Women design juti sandal",cat:"Fashion",sub:"Womens Footwear",price:211,cut:999,link:"https://fktr.in/jKEw8ci",
+imgs:["https://i.ibb.co/ymkyjHg4/Screenshot-2026-01-31-20-45-22-254-com-flipkart-android-edit.jpg"]},
+{ id:8,name:"UV protection sunglasses",cat:"Sunglasses",price:169,cut:1640,link:"https://fktr.in/WuDnz8I",
+imgs:["https://i.ibb.co/HL7Bk6Hn/Screenshot-2026-01-31-21-13-30-324-com-flipkart-android-edit.jpg"]},
+{ id:9,name:"Men straight fit jeans",cat:"Fashion",sub:"Men",price:424,cut:2499,link:"https://fktr.in/ikPn8Sb",
+imgs:["https://i.ibb.co/kgjDGfz9/Screenshot-2026-02-10-16-37-50-453-com-flipkart-android-edit.jpg"]},
+{ id:10,name:"Sharara kurti set",cat:"Fashion",sub:"Women",price:464,cut:3999,link:"https://fktr.in/LTCH5Lm",
+imgs:["https://i.ibb.co/6JHDKJRm/Screenshot-2026-02-10-19-31-18-540-com-flipkart-android-edit.jpg","https://i.ibb.co/TqKDf49q/Screenshot-2026-02-10-19-31-29-139-com-flipkart-android-edit.jpg"]},
+{ id:11,name:"Women pure cotton anarkali kurti with dupatta",cat:"Fashion",sub:"Women",price:480,cut:2899,link:"https://fktr.in/sDOinon",
+imgs:["https://i.ibb.co/JR9whV7M/Screenshot-2026-02-10-21-42-47-857-com-flipkart-android-edit.jpg","https://i.ibb.co/GXt1fx5/Screenshot-2026-02-10-21-43-07-006-com-flipkart-android-edit.jpg"]},
+{ id:12,name:"Women cotton blend crop top plazzo ethnic jacket set",cat:"Fashion",sub:"Women",price:638,cut:3699,link:"https://fktr.in/vkW4jM0",
+imgs:["https://i.ibb.co/nG1yxRP/Screenshot-2026-02-10-21-49-53-660-com-flipkart-android-edit.jpg","https://i.ibb.co/W4qSsqvC/Screenshot-2026-02-10-21-50-13-247-com-flipkart-android-edit.jpg"]},
+{ id:13,name:"Men regular fit spread collar casual shirt",cat:"Fashion",sub:"Men",price:291,cut:1499,link:"https://fktr.in/rJZiDtH",
+imgs:["https://i.ibb.co/N6kq0S4H/Screenshot-2026-02-10-22-04-42-213-com-flipkart-android-edit.jpg","https://i.ibb.co/SwV7ncpB/Screenshot-2026-02-10-22-05-04-517-com-flipkart-android-edit.jpg"]},
+{ id:14,name:"Men straight fit black cotton blend trousers",cat:"Fashion",sub:"Men",price:528,cut:1999,link:"https://fktr.in/PMTUi9e",
+imgs:["https://i.ibb.co/Y41Fzbs8/Screenshot-2026-02-10-22-08-27-118-com-flipkart-android-edit.jpg","https://i.ibb.co/m56wjRYH/Screenshot-2026-02-10-22-08-14-130-com-flipkart-android-edit.jpg"]},
+{ id:15,name:"Printed Georgette stiched Gown",cat:"Fashion",sub:"Women",price:467,cut:1799,link:"https://fktr.in/IntJ78t",
+imgs:["https://i.ibb.co/RTYt208m/Screenshot-2026-02-10-22-39-06-063-com-flipkart-android-edit.jpg","https://i.ibb.co/xqNQMcR8/Screenshot-2026-02-10-22-39-20-023-com-flipkart-android-edit.jpg"]},
+{ id:16,name:"Women fit and flare full length dress",cat:"Fashion",sub:"Women",price:428,cut:999,link:"https://fktr.in/jW4hIh9",
+imgs:["https://i.ibb.co/XrS31FSb/Screenshot-2026-02-10-22-44-43-250-com-flipkart-android-edit.jpg","https://i.ibb.co/SXmJhQxv/Screenshot-2026-02-10-22-44-56-517-com-flipkart-android-edit.jpg"]},
+{ id:17,name:"Men colourblock Round Neck pure cotton T-shirt",cat:"Fashion",sub:"Men",price:285,cut:999,link:"https://fktr.in/Z6MRv8t",
+imgs:["https://i.ibb.co/4Rn7VV35/Screenshot-2026-02-10-22-51-24-418-com-flipkart-android-edit.jpg","https://i.ibb.co/Y45yHLH9/Screenshot-2026-02-10-22-51-43-891-com-flipkart-android-edit.jpg"]},
+{ id:18,name:"Brown Men sling bag stylish cross body for office & cash & business collection & travels",cat:"Bags",price:238,cut:1299,link:"https://fktr.in/n18j0C6",
+imgs:["https://i.ibb.co/F473vR9N/Screenshot-2026-02-10-22-59-19-457-com-flipkart-android-edit.jpg","https://i.ibb.co/1J6NYGcH/Screenshot-2026-02-10-23-00-00-901-com-flipkart-android-edit.jpg"]},
+{ id:19,name:"Black Men Artificial Jewellery Necklace Arrow Pendant for Boys Black Silver Plated Alloy Chain",cat:"Fashion",sub:"Mens Accessories",price:179,cut:999,link:"https://fktr.in/pFPbwUp",
+imgs:["https://i.ibb.co/NnFTF2MG/Screenshot-2026-02-10-23-04-03-472-com-flipkart-android-edit.jpg","https://i.ibb.co/XfbRpgQv/Screenshot-2026-02-10-23-04-25-173-com-flipkart-android-edit.jpg"]},
+{ id:20,name:"Butterfly Style Hair Clutcher Clips for Women Hair Claw",cat:"Fashion",sub:"Womens Accessories",price:175,cut:999,link:"https://fktr.in/y3mcqRg",
+imgs:["https://i.ibb.co/gZp5mrDQ/Screenshot-2026-02-10-23-09-03-804-com-flipkart-android-edit.jpg" ,"https://i.ibb.co/bR3fymgV/Screenshot-2026-02-10-23-09-13-924-com-flipkart-android-edit.jpg"]},
+{ id:21,name:"Women pink handbag",cat:"Bags",price:329,cut:1899,link:"https://fktr.in/HI1K7lW",
+imgs:["https://i.ibb.co/VWRKTBSB/Screenshot-2026-02-10-23-14-06-245-com-flipkart-android-edit.jpg" , "https://i.ibb.co/0RWmMK4h/Screenshot-2026-02-10-23-13-50-580-com-flipkart-android-edit.jpg"]},
+{ id:22,name:"6 Matte clutcher hair claw clip Mix Square Tshape hair Accessories For Women Hair Claw",cat:"Fashion",sub:"Womens Accessories",price:142,cut:599,link:"https://fktr.in/Oj1f7Qe",
+imgs:["https://i.ibb.co/q6sDDtq/Screenshot-2026-02-10-23-20-16-553-com-flipkart-android-edit.jpg","https://i.ibb.co/mC2L16vP/Screenshot-2026-02-10-23-20-38-812-com-flipkart-android-edit.jpg"]},
+{ id:23,name:"UV Protection Retro Square, Round Sunglasses (Free Size) (For Women, Black)",cat:"Sunglasses",price:151,cut:999,link:"https://fktr.in/i1Pjb56",
+imgs:["https://i.ibb.co/wry6Jnqx/Screenshot-2026-02-10-23-23-03-834-com-flipkart-android-edit.jpg","https://i.ibb.co/YBL56vzJ/Screenshot-2026-02-10-23-23-19-204-com-flipkart-android-edit.jpg"]}
+];
+
+let activeCat="For You", activeSub="", searchTerm="";
+let wishlist=JSON.parse(localStorage.getItem("wishlist")||"[]");
+
+/* RENDER FUNCTIONS */
+function drawCategories(){
+    cat_panel.innerHTML="";
+    DB_CATS.forEach(c=>{cat_panel.innerHTML+=`<div class="cat-item" onclick="changeCat('${c.name}')">${c.name}</div>`;});
+}
+function drawSubcats(){
+    sub_panel.innerHTML="";
+    let f=DB_CATS.find(x=>x.name===activeCat);
+    if(f&&f.sub){f.sub.forEach(s=>{sub_panel.innerHTML+=`<div class="sub-btn" onclick="changeSub('${s}')">${s}</div>`;});}
+}
+
+function drawProducts(list=DB_ITEMS){
+    grid_panel.innerHTML="";
+    list.filter(p=>{
+        if(activeCat==="For You" && p.cat=== "Valentines Deals") return false; // Hide valentines deals from For You
+        return (activeCat==="For You"||p.cat===activeCat) && (activeSub===""||p.sub===activeSub) && p.name.toLowerCase().includes(searchTerm);
+    }).forEach(p=>{
+        grid_panel.innerHTML+=`
+        <div class="prod-card">
+            <div class="prod-img-box">
+                <div class="slider" id="slider_${p.id}">
+                    ${p.imgs.map(img=>`<img src="${img}" onclick='openViewer(${JSON.stringify(p.imgs)})'>`).join("")}
+                </div>
+                <div class="arrow left" onclick="slideImg(${p.id},-1)">‹</div>
+                <div class="arrow right" onclick="slideImg(${p.id},1)">›</div>
+            </div>
+            <div class="info-box">
+                <b>${p.name}</b><br>
+                <span class="price">₹${p.price}</span> <span class="cut">₹${p.cut}</span>
+                <div class="btn-row">
+                    <button onclick="addWishlist(${p.id})">🛒</button>
+                    <button onclick="window.open('${p.link}')">BUY</button>
+                </div>
+            </div>
+        </div>`;
+    });
+}
+
+/* FIXING SLIDER ARROWS */
+function slideImg(id,dir){
+    let s=document.getElementById("slider_"+id);
+    s.scrollBy({left:dir*s.clientWidth,behavior:"smooth"});
+}
+
+/* NAVIGATION & SEARCH */
+function changeCat(c){activeCat=c;activeSub="";drawSubcats();drawProducts();}
+function changeSub(s){activeSub=s;drawProducts();}
+function runSearch(){searchTerm=searchInp.value.toLowerCase();drawProducts();}
+function resetHome(){
+    document.getElementById("accountPage").style.display="none";
+    document.getElementById("loginPage").style.display="none";
+    document.getElementById("mainSection").style.display="block";
+    activeCat="For You"; drawProducts();
+}
+
+/* WISHLIST */
+function addWishlist(id){if(!wishlist.includes(id)){wishlist.push(id);localStorage.setItem("wishlist",JSON.stringify(wishlist));alert("Saved to wishlist");}}
+function showWishlist(){drawProducts(DB_ITEMS.filter(p=>wishlist.includes(p.id)));}
+
+/* ACCOUNT & LOGIN FIX */
+function openAccount(){
+    let u = localStorage.getItem("customer_name");
+    document.getElementById("mainSection").style.display="none";
+    document.getElementById("loginPage").style.display="none";
+    document.getElementById("accountPage").style.display="none";
+    if(u){
+        document.getElementById("accountPage").style.display="block";
+        document.getElementById("accName").innerText="Hello, "+u;
+    } else {
+        document.getElementById("loginPage").style.display="block";
+    }
+}
+function doLogin(){
+    let name = document.getElementById("custName").value.trim();
+    if(name===""){alert("Enter name");return;}
+    localStorage.setItem("customer_name",name);
+    document.getElementById("userTop").innerText=name;
+    openAccount();
+}
+function logout(){localStorage.removeItem("customer_name");location.reload();}
+
+/* VIEWER */
+function openViewer(imgs){
+    viewerSlider.innerHTML=imgs.map(i=>`<img src="${i}" style="width:100%;height:100vh;object-fit:contain;">`).join("");
+    document.getElementById("imgViewer").style.display="block";
+}
+function closeViewer(){document.getElementById("imgViewer").style.display="none";}
+
+/* OTHER ACTIONS */
+function donate(){window.location.href="upi://pay?pa=9343988416@jio&pn=Smartbuy Foundation";}
+function openInsta(){window.open("https://instagram.com/smart_buy.ind");}
+function openTelegram(){window.open("https://t.me/smartbuyind");}
+function openHelp(){window.location.href="mailto:shaileshkumarchauhan9340@gmail.com";}
+
+window.onload=()=>{
+    let u=localStorage.getItem("customer_name");
+    if(u) document.getElementById("userTop").innerText=u;
+    drawCategories();drawSubcats();drawProducts();
+}
+</script>
+</body>
+</html>

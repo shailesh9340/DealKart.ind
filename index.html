@@ -346,6 +346,18 @@ window.onload=()=>{
     if(u) document.getElementById("userTop").innerText=u;
     drawCategories();drawSubcats();drawProducts();
 };
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker
+        .register("service-worker.js")
+        .then((reg) => {
+          console.log("Service Worker registered! Scope:", reg.scope);
+        })
+        .catch((err) => {
+          console.error("Service Worker registration failed:", err);
+        });
+    });
+  }
 </script>
 </body>
 </html>

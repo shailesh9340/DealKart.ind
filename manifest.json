@@ -1,20 +1,22 @@
 {
   "name": "DEALKART",
-  "short_name": "dealkart",
-  "start_url": "/DealKart.ind/",
+  "short_name": "DEALKART",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#000000",
+  "theme_color": "#2209c2",
   "icons": [
     {
       "src": "icon-192.jpeg",
       "sizes": "192x192",
-      "type": "image/jpeg"
+      "type": "image/jpeg",
+      "purpose": "any"
     },
     {
       "src": "icon-512.jpeg",
       "sizes": "512x512",
-      "type": "image/jpeg"
+      "type": "image/jpeg",
+      "purpose": "any"
     }
   ]
 }

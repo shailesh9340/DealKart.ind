@@ -13,69 +13,64 @@
 <style>
 body{margin:0;font-family:Arial;background:#f4f4f4}
 
-/* HEADER */
-header{
-position:fixed;top:0;width:100%;height:65px;z-index:100;
-background:#2209c2;padding:0 15px;
-display:flex;align-items:center;justify-content:center;gap: 15px;
-}
+body{margin:0;font-family:Arial;background:#f4f4f4}
+header{position:fixed;top:0;width:100%;height:65px;z-index:100;background:#2209c2;padding:0 15px;display:flex;align-items:center;justify-content:center;gap: 15px;}
 header img{height:45px;border-radius:50%;border: 3px solid #f7f3f3}
-.brand-name {
-    font-size: 24px;
-    font-weight: 900;
-    color: #ffee05;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    -webkit-text-stroke: 3px black;
-    paint-order:stroke fill;
-    /* यहाँ से ग्लो इफेक्ट शुरू होता है */
-    text-shadow: 0 0 10px #ff0055, 
-                 0 0 20px #ff0055, 
-                 0 0 40px #ff0055;
-    animation: glow 1.5s ease-in-out infinite alternate;
-}
-
-/* चमकने वाली एनीमेशन */
-@keyframes glow {
-    from {
-        text-shadow: 0 0 5px #0a2ffc, 0 0 10px #fff, 0 0 15px #ff0055;
-    }
-    to {
-        text-shadow: 0 0 10px #fff, 0 0 20px #ff4d8d, 0 0 30px #ff4d8d;
-    }
-}
-/* MAIN */
+.brand-name {font-size: 24px;font-weight: 900;color: #ffee05;text-transform: uppercase;letter-spacing: 2px;-webkit-text-stroke: 3px black;paint-order:stroke fill;text-shadow: 0 0 10px #ff0055, 0 0 20px #ff0055, 0 0 40px #ff0055;animation: glow 1.5s ease-in-out infinite alternate;}
+@keyframes glow { from { text-shadow: 0 0 5px #0a2ffc, 0 0 10px #fff, 0 0 15px #ff0055; } to { text-shadow: 0 0 10px #fff, 0 0 20px #ff4d8d, 0 0 30px #ff4d8d; } }
 .main{padding-top:100px;padding-bottom:120px}
-
-/* SEARCH */
 .search-wrapper{padding:10px}
-.search-input {
-    width: 50%; padding: 15px; border: none; border-radius: 30px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2); outline: none;}
-.search-bar-container {
-    padding: 30px;
-    background: #fff;
-    position: sticky;
-    top: 60px; /* हेडर के नीचे चिपका रहेगा */
-    z-index: 99;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+.search-input { width: 90%; padding: 12px 20px; border: 2px solid #eee; border-radius: 25px; font-size: 16px; outline: none; transition: 0.3s; }
+.search-input:focus { border-color: #ff0055; box-shadow: 0 0 8px rgba(255, 0, 85, 0.2); }
+/* Placeholder का रंग एनिमेट करने के लिए */
+#searchInp::placeholder {
+    color: var(--placeholder-color, #999); /* डिफ़ॉल्ट ग्रे रहेगा */
+    transition: color 0.5s ease-in-out;    /* रंग बदलने का स्मूथ एनीमेशन */
+    opacity: 1; 
 }
-
-.search-input {
-    width: 90%;
-    padding: 12px 20px;
-    border: 2px solid #eee;
-    border-radius: 25px; /* गोल डिज़ाइन */
-    font-size: 16px;
-    outline: none;
+.pagination-container { grid-column: 1 / -1; display: flex; justify-content: center; align-items: center; gap: 5px; padding: 20px 10px; flex-wrap: wrap; }
+.pag-nav-btn { padding: 8px 15px; background: #2209c2; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
+.pag-nav-btn:disabled { background: #ccc; cursor: not-allowed; }
+.pag-num-btn { width: 35px; height: 35px; border: 1px solid #2209c2; background: white; color: #2209c2; border-radius: 5px; font-weight: bold; cursor: pointer; }
+.pag-num-btn.active { background: #ff0055; color: white; border-color: #ff0055; }
+.partner-section { margin-top: 30px; padding: 15px; background: rgba(44, 2, 255, 0.943); border-radius: 0px; }
+.partner-logos { display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 15px; }
+.partner-logos img { height: 30px; filter: brightness(1.1); background: #fff; padding: 5px; border-radius: 5px; }
+.v-container { background: #fff; margin: 0px; border-radius: 10px; overflow: hidden; border: 2px solid #eb1115; }
+.v-header { background: #ff416c; color: #fff; padding: 8px; text-align: center; font-weight: bold; font-size: 14px; }
+.v-scroll { display: flex; overflow-x: auto; padding: 10px; gap: 15px; }
+.v-item { min-width: 100px; text-align: center; }
+.v-item img { width: 80px; height: 80px; border-radius: 10px; object-fit: cover; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+.cat-scroll{display:flex;overflow-x:auto;background:#ffd902;padding:5px;border-radius:10px;}
+.cat-item{color:#fff;text-align:center;margin-right:10px; font-weight: bold; cursor: pointer; border: 1px solid #000; padding: 3px 5px;border-radius:3px;background: #ff416c;}
+.sub-scroll{display:flex;overflow-x:auto;padding:10px;}
+.sub-btn{color:#fff;padding:3px 5px;background:#ff0202;border-radius:4px;margin-right:8px; cursor: pointer; border:1px solid #000;}
+#grid_panel{ display:grid; grid-template-columns:1fr 1fr; gap:10px; padding:10px; }
+.prod-card{ background:#fff; border-radius:10px; overflow:hidden; position:relative; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+.prod-img-box{ height:180px; position:relative; }
+.slider{display:flex;overflow-x:auto;scroll-snap-type:x mandatory; scrollbar-width: none;}
+.slider img{min-width:100%;height:180px;object-fit:cover;scroll-snap-align:start;cursor:pointer}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.5);color:#fff;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer;z-index:5;}
+.arrow.left{left:5px}.arrow.right{right:5px}
+.info-box{padding:15px}
+.price{color:green;font-weight:bold}.cut{text-decoration:line-through;color:#f40e0e;font-size:12px}
+.btn-row{display:flex;gap:5px}.btn-row button{ flex:1; border:none; padding:8px; background:#e2de04;font-size:15px;font-weight:900;color:#fff; border-radius:5px; cursor: pointer; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);} .btn-row button:active {
+    transform: scale(0.95); /* दबाने पर थोड़ा छोटा होगा */
+    transition: 0.1s;
+}
+.prod-card:hover {
+    transform: translateY(-5px); /* कार्ड थोड़ा ऊपर उठेगा */
     transition: 0.3s;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
 }
-
-.search-input:focus {
-    border-color: #ff0055; /* टाइप करते समय बॉर्डर चमकेगा */
-    box-shadow: 0 0 8px rgba(255, 0, 85, 0.2);
-}
-
+.bottom-nav{ position: fixed; bottom: 0; width: 100%; display: flex; justify-content: space-around; padding: 5px 0; background: #eafafd; z-index: 100;}
+.bottom-nav div { flex: 1; text-align: center; padding: 10px 0; margin: 5px;font-weight:900; border-radius: 15px; cursor: pointer; border: 2px solid transparent;}
+.bottom-nav div:nth-child(1) { border-color: #FF671F; }.bottom-nav div:nth-child(2) { border-color: #f903b7f2; }.bottom-nav div:nth-child(3) { border-color: #046A38; }
+#loginPage, #accountPage{display:none;padding:80px 20px;text-align:center;background:#0d0dde;color:#fff; min-height: 100vh;}
+#loginPage input{width:80%;padding:12px;margin:10px 0;border-radius:8px;border:none}
+#loginPage button{width:85%;padding:12px;background:#2209c2;color:#fff;border:none;border-radius:8px}
+#imgViewer{ position:fixed;inset:0;background:#000;display:none;z-index:200; }
+#userTop{cursor:pointer; color:white; font-weight:bold;}
 /*---FAQ SECTION---*/
 .faq-section { margin-top: 20px; text-align: left; padding: 10px; }
 .faq-item { background: #fff; color: #333; margin-bottom: 10px; border-radius: 8px; overflow: hidden; border: 1px solid #ddd; }
@@ -83,157 +78,13 @@ header img{height:45px;border-radius:50%;border: 3px solid #f7f3f3}
 .faq-answer { padding: 0 15px; max-height: 0; overflow: hidden; transition: 0.3s ease-out; font-size: 14px; color: #000000; }
 .faq-item.active .faq-answer { padding: 15px; max-height: 200px; border-top: 1px solid #eee; }
 
-.pagination-container {
-    grid-column: 1 / -1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    padding: 20px 10px;
-    flex-wrap: wrap; /* मोबाइल पर बटन्स नीचे आ जाएं अगर जगह कम हो */
-}
-
-.pag-nav-btn {
-    padding: 8px 15px;
-    background: #2209c2;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.pag-nav-btn:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-}
-
-.pag-num-btn {
-    width: 35px;
-    height: 35px;
-    border: 1px solid #2209c2;
-    background: white;
-    color: #2209c2;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.pag-num-btn.active {
-    background: #ff0055; /* एक्टिव पेज का रंग गुलाबी */
-    color: white;
-    border-color: #ff0055;
-}
-/* AFFILIATE PARTNERS SECTION */
-.partner-section {
-    margin-top: 30px;
-    padding: 15px;
-    background: rgba(44, 2, 255, 0.943);
-    border-radius: 0px;
-}
-.partner-section h4 {
-    margin-bottom: 15px;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #edf57f;
-}
-.partner-logos {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-.partner-logos img {
-    height: 30px; /* Logo ka size yahan se control karein */
-    filter: brightness(1.1);
-    background: #fff;
-    padding: 5px;
-    border-radius: 5px;
-}
-
-/* VALENTINE FLIPKART STYLE SECTION */
-.v-container {
-    background: #fff; margin: 0px; border-radius: 10px; overflow: hidden;
-    border: 2px solid #eb1115;
-}
-.v-header {
-    background: #ff416c; color: #fff; padding: 8px; text-align: center;
-    font-weight: bold; font-size: 14px;
-}
-.v-scroll {
-    display: flex; overflow-x: auto; padding: 10px; gap: 15px;
-}
-.v-item {
-    min-width: 100px; text-align: center;
-}
-.v-item img {
-    width: 80px; height: 80px; border-radius: 10px; object-fit: cover;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-.v-item p { margin: 5px 0; font-size: 12px; font-weight: bold; color: #d32f2f; }
-
-/* CATEGORY */
-.cat-scroll{display:flex;overflow-x:auto;background:#ffd902;padding:5px;margin:0px !important;border-radius:10px;margin-top: 0px;}
-.cat-item{color:rgb(254, 254, 253);;text-align:center;margin-right:10px; font-weight: bold; cursor: pointer; margin-bottom: 0;
-/* --- NEW BORDER STYLE --- */
-border: 1px solid #000; /* Black border */
-padding: 3px 5px;border-radius:3px;background: #ff416c;display:inline-block;
-}
-
-.sub-scroll{display:flex;overflow-x:auto;padding:10px;margin:0 px}
-.sub-btn{color:rgb(254, 254, 253);padding:3px 5px;background:#ff0202;border-radius:4px;margin-right:8px; cursor: pointer; border:1px solid #000;}
-
-/* PRODUCTS */
-#grid_panel{ display:grid; grid-template-columns:1fr 1fr; gap:10px; padding:10px; }
-.prod-card{ background:#fff; border-radius:10px; overflow:hidden; position:relative; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
-.prod-img-box{ height:180px; position:relative; }
-
-/* SLIDER */
-.slider{display:flex;overflow-x:auto;scroll-snap-type:x mandatory; scrollbar-width: none;}
-.slider::-webkit-scrollbar {display: none;}
-.slider img{min-width:100%;height:180px;object-fit:cover;scroll-snap-align:start;cursor:pointer}
-
-/* ARROWS - EXACTLY LIKE YOUR ORIGINAL */
-.arrow{
-position:absolute;top:50%;
-transform:translateY(-50%);
-background:rgba(0,0,0,0.5);
-color:#fff;width:30px;height:30px;border-radius:50%;
-display:flex;align-items:center;justify-content:center;
-font-size:18px;cursor:pointer;z-index:5;user-select:none;
-}
-.arrow.left{left:5px}
-.arrow.right{right:5px}
-
-.info-box{padding:15px}
-.price{color:green;font-weight:bold}
-.cut{text-decoration:line-through;color:#f40e0e;font-size:12px}
-.btn-row{display:flex;gap:5px}
-.btn-row button{ flex:1; border:none; padding:8px; background:#e2de04;font-size:15px;font-weight:900;color:#fff; border-radius:5px; cursor: pointer;/* --- NEW TEXT SHADOW --- */ text-shadow: 2px 2px 4px rgba(0,0,0,0.5);} 
-
-
-/* NAV */
-.bottom-nav{ position: fixed; bottom: 0; width: 100%; display: flex; justify-content: space-around; padding: 5px 0; background: #eafafd; z-index: 100;}
-.bottom-nav div { flex: 1; text-align: center; padding: 10px 0; margin: 5px;font-weight:600; border-radius: 15px; cursor: pointer; border: 2px solid transparent;font-weight: 900;}
-.bottom-nav div:nth-child(1) { border-color: #FF671F; }
-.bottom-nav div:nth-child(2) { border-color: #f903b7f2; }
-.bottom-nav div:nth-child(3) { border-color: #046A38; }
-
-
-/* PAGES */
-#loginPage, #accountPage{display:none;padding:80px 20px;text-align:center;background:#0d0dde;color:#fff; min-height: 100vh;}
-#loginPage input{width:80%;padding:12px;margin:10px 0;border-radius:8px;border:none}
-#loginPage button{width:85%;padding:12px;background:#2209c2;color:#fff;border:none;border-radius:8px}
-
-#imgViewer{ position:fixed;inset:0;background:#000;display:none;z-index:200; }
 </style>
 </head>
 <body>
 
 <header>
-<img src="https://i.ibb.co/k6Hy4TTP/1770736037665.png">
+<a href="https://affiliate-program.amazon.in/" target="_blank"></a>
+<img src="https://i.ibb.co/k6Hy4TTP/1770736037665.png" ondblclick="openDashboard()" style="cursor:pointer;" title="Double click for Admin">
 <div class="brand-name">DEALKART🛒</div>
 <div style="display:flex;align-items:center;gap:15px;">
 <div id="userTop" onclick="openAccount()">Login</div>
@@ -251,8 +102,11 @@ font-size:18px;cursor:pointer;z-index:5;user-select:none;
 </div>
 <div class="main" id="mainSection">
    <div class="search-wrapper" style="position: relative;">
-    <input class="search-input" id="searchInp" placeholder="Search Products.,mobiles,Fashions,footwears,watches.." onkeyup="toggleClearBtn(); runSearch()">
-    <span id="voiceBtn" onclick="startVoiceSearch()" style="position:absolute; right: 65px; top:50%; transform:translateY(-50%); cursor:pointer; font-size:18px; margin-top: -12px;">🎤</span>
+    <input class="search-input" id="searchInp" placeholder="🔍Search Products.,mobiles,Fashions,footwears,watches.." onkeyup="toggleClearBtn(); runSearch()">
+    <span id="voiceBtn" onclick="startVoiceSearch()" style="position:absolute; right: 65px; top:50%;margin-top: -10px; transform:translateY(-50%); cursor:pointer;">
+    <img src="https://image.pngaaa.com/829/23829-middle.png" id="micImg" style="width: 20px; height: 20px; object-fit: contain;">
+    
+</span>
     <span id="clearBtn" onclick="clearSearch()" style="display:none; position:absolute; right:45px; top:50%; transform:translateY(-50%); cursor:pointer; color:#fd0a0a; font-size:18px; font-weight:bold;margin-top:-12px;">✕</span>
     <select id="priceFilter" onchange="drawProducts()">
         <option value="all">Price</option>
@@ -280,15 +134,11 @@ font-size:18px;cursor:pointer;z-index:5;user-select:none;
             <div class="v-item" onclick="openCategory('February Maha Deals')">
                 <img src="https://i.ibb.co/Jjz1MgSn/Screenshot-2026-02-12-15-22-16-468-in-amazon-m-Shop-android-shopping-edit.jpg"><p>Premium Watches <br>Under ₹379</p>
             </div>
-
-</div>
-<div id="timerContainer" style="background: #ffffff; border: 2px dashed #ff0055; padding: 5px; border-radius: 12px; text-align: center; margin: 5px auto; width: 90%; max-width: 300px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-family: sans-serif;">
-    <h4 style="color: #ff0055; margin: 0 0 5px 0; font-size: 18px;">🚀 February Maha Deals!</h4>
-    <p style="font-weight: bold; margin: 0; color: #333; font-size: 14px;">सेल खत्म होने में सिर्फ:</p>
+        </div>
+<div id="timerContainer" style="background: #ffffff; border: 2px dashed #ff0055; padding: 10px; border-radius: 12px; text-align: center; margin: 10px auto; width: 90%;">
+        <h4 style="color: #ff0055; margin: 0;">🚀 Offer Ends In:</h4>
+        <div id="dealTimer" style="font-size: 20px; color: #ff0055; font-weight: 700;">00d 00h 00m 00s</div>
     
-    <div id="dealTimer" style="font-size: 20px; color: #ff0055; font-weight: 700; letter-spacing: 1px; margin-top: 8px; display: flex; justify-content: center; gap: 5px;">
-        00d 00h 00m 00s
-    </div>
 </div>
     
     </div>
@@ -562,7 +412,34 @@ imgs:["https://i.ibb.co/Q7W0QZFv/Screenshot-2026-02-12-05-41-17-284-com-ril-ajio
 { id:71, name:"TRASE Ballet Flats for Women | Comfortable Footwear for Office & Casual Use",cat:"Fashion",sub:"Womens Footwear",price:795,cut:1799,link:"https://amzn.to/465Ufc0", imgs:["https://m.media-amazon.com/images/I/81oBynlxItL._SY625_.jpg","https://m.media-amazon.com/images/I/61VZKNNyY6L._SY625_.jpg"]},
 { id:72, name:"ASIAN Men's TARZAN-04 Casual Sneaker Shoes with Synthetic Upper Lightweight Comfortable Mid Top Sneaker Shoes for Men's & Boy's",cat:"Fashion",sub:"Mens Footwear",price:675,cut:1499,link:"https://amzn.to/4qEYqmu", imgs:["https://m.media-amazon.com/images/I/71dGrejh08L._SY625_.jpg","https://m.media-amazon.com/images/I/61zGnkhEQIL._SY695_.jpg"]},
 { id:73, name:"Ultra-Comfort Slip-On Clogs for Women | Lightweight, Breathable, Anti-Skid Casual Sandals",cat:"Fashion",sub:"Womens Footwear",price:319,cut:999,link:"https://amzn.to/3ZyRo7V", imgs:["https://m.media-amazon.com/images/I/51VKFzEK9JL._SY695_.jpg","https://m.media-amazon.com/images/I/61eJ5Zyu3sL._SX625_.jpg"]},
-{ id:74, name:"THE ROYAL WAY Metal Women'S Stylist Analogue Ladies Classic Wrist Watch - Black",cat:"Electronics",sub:"Accessories",price:799,cut:1999,link:"https://amzn.to/3MHdXEs", imgs:["https://m.media-amazon.com/images/I/51k+tNqeOsL.jpg","https://m.media-amazon.com/images/I/51k+tNqeOsL.jpg"]}
+{ id:74, name:"THE ROYAL WAY Metal Women'S Stylist Analogue Ladies Classic Wrist Watch - Black",cat:"Electronics",sub:"Accessories",price:799,cut:1999,link:"https://amzn.to/3MHdXEs", imgs:["https://m.media-amazon.com/images/I/51k+tNqeOsL.jpg","https://m.media-amazon.com/images/I/51k+tNqeOsL.jpg"]},
+{ id:75, name:"styledose Luxury Dial in Square case with Ston Studded brecelet Strap Quartz Analogue Wrist Watches for Women's & Girls&Miss&Ladies",cat:"February Maha Deals",price:375,cut:1999,link:"https://amzn.to/3ZWvPOR", imgs:["https://m.media-amazon.com/images/I/61-ELXAXhNL._SX679_.jpg","https://m.media-amazon.com/images/I/61qwqaAba1L._SY741_.jpg"]},
+{ id:76, name:"Symbol Premium Women's Sheath Dress (Knee Length | Desk-to-Dinner) (Available in Plus Sizes)",cat:"Fashion",sub:"Women",price:1199,cut:2999,link:"https://amzn.to/3O9g7x8", imgs:["https://m.media-amazon.com/images/I/61WKip+AQqL._SX569_.jpg","https://m.media-amazon.com/images/I/71fh5H5ZxPL._SX569_.jpg"]},
+{ id:77, name:"WALKAROO Sandal For Womens|Trendy|Light Weight and Comfortable|Soft Footbed|WL7554",cat:"Fashion",sub:"Womens Footwear",price:349,cut:359,link:"https://amzn.to/4rPIyi3", imgs:["https://m.media-amazon.com/images/I/71D2uAZT9EL._SY625_.jpg","https://m.media-amazon.com/images/I/81oSxR5p8LL._SY625_.jpg"]},
+{ id:78, name:"DEELMO Men's Cotton Blend Mandarin Collar Self One Design Full Sleeve Casual Short Kurta",cat:"Fashion",sub:"Men",price:449,cut:2199,link:"https://amzn.to/4rkm215", imgs:["https://m.media-amazon.com/images/I/61P0jlvu1OL._SX679_.jpg","https://m.media-amazon.com/images/I/61jCzelG6XL._SX679_.jpg"]},
+{ id:79, name:"JVX Men Sweatshirts || Sweatshirts for Men || Unisex Hoodie ||Hoodie ||Available in Plus Size (SWEATSHIRT-11)",cat:"Fashion",sub:"Men/Women",price:599,cut:2999,link:"https://amzn.to/4075e1o", imgs:["https://m.media-amazon.com/images/I/51sSJUx8mwL._SY741_.jpg","https://m.media-amazon.com/images/I/61SOAIN5udL._SY741_.jpg"]},
+{ id:80, name:"Men's Comfortable Corduroy Pants | Relaxed Fit Stretch Waist Trousers for Everyday Wear",cat:"Fashion",sub:"Men",price:499,cut:2999,link:"https://amzn.to/4ceCbR1", imgs:["https://m.media-amazon.com/images/I/71EqqfXr8jL._SY741_.jpg","https://m.media-amazon.com/images/I/711+-nejY6L._SY741_.jpg"]},
+{ id:81, name:"MOKOSH Women's Silk Embroidered Kurta Pant Dupatta Set (DM-474)",cat:"Fashion",sub:"Women",price:1323,cut:4999,link:"https://amzn.to/4bRhDO8", imgs:["https://m.media-amazon.com/images/I/61AZSCVB8cL._SY741_.jpg","https://m.media-amazon.com/images/I/71pIABfDSoL._SY741_.jpg"]},
+{ id:82, name:"BULLMER Trendy Clothing Set with Hoodie & Pants Co-ords for Men",cat:"Fashion",sub:"Men",price:819,cut:2998,link:"https://amzn.to/4tzvpLG", imgs:["https://m.media-amazon.com/images/I/51s6QK-gLcL._SY741_.jpg","https://m.media-amazon.com/images/I/51naeVmz+LL._SY741_.jpg"]},
+{ id:83, name:"ANNI Designer Women's Rayon Blend Solid Straight Kurta with Pant & Dupatta",cat:"Fashion",sub:"Women",price:676,cut:2599,link:"https://amzn.to/464FFBB", imgs:["https://m.media-amazon.com/images/I/51suEsggRLL._SX569_.jpg","https://m.media-amazon.com/images/I/810YUES1yHL._SY741_.jpg"]},
+{ id:84, name:"Sidhidata Women's Georgette Digital Printed Ready To Wear one Minute Saree With Unstitched Blouse Piece",cat:"Fashion",sub:"Women",price:988,cut:2998,link:"https://amzn.to/3ZH4P5E", imgs:["https://m.media-amazon.com/images/I/71L7l+xbkmL._SY741_.jpg","https://m.media-amazon.com/images/I/819urgsTSkL._SY741_.jpg"]},
+{ id:85, name:"GRECIILOOKS High Waist Polycotton Trousers for Women – Flared Parachute Pants with Side Pockets | Regular Fit",cat:"Fashion",sub:"Women",price:549,cut:2299,link:"https://amzn.to/4kzoii9", imgs:["https://m.media-amazon.com/images/I/61Kz60FHtmL._SY741_.jpg","https://m.media-amazon.com/images/I/51Ccj0K6LpL._SY741_.jpg"]},
+{ id:86, name:"SWADESI STUFF Men's Stylish Polycotton Regular Fit Chinese Collar Half Sleeve Shirt – Solid Color",cat:"Fashion",sub:"Men",price:358,cut:1499,link:"https://amzn.to/3MByZUO", imgs:["https://m.media-amazon.com/images/I/51Ju4kM4AVL._SX679_.jpg","https://m.media-amazon.com/images/I/51DdU210J4L._SY741_.jpg"]},
+{ id:87, name:"Aahwan Grey Solid High Waist Straight Korean Loose Pleated Wide Leg Trouser for Women's & Girl's",cat:"Fashion",sub:"Women",price:616,cut:1999,link:"https://amzn.to/4ajSBGk", imgs:["https://m.media-amazon.com/images/I/51RzKio94PL._SY741_.jpg","https://m.media-amazon.com/images/I/71ceg1tJktL._SY741_.jpg"]},
+{ id:88, name:"Aahwan Black Printed Square Neck Sleeveless Backless Short Indo-Western Ethnic Kurti Top for Women's & Girl's",cat:"Fashion",sub:"Women",price:469,cut:1999,link:"https://amzn.to/4aj6nJb", imgs:["https://m.media-amazon.com/images/I/61Ypz94u62L._SY741_.jpg","https://m.media-amazon.com/images/I/71s4ApLtLnL._SY741_.jpg"]},
+{ id:89, name:"CB-COLEBROOK Men's Casual Button Down Shirts Long Sleeve Linen Shirt Fashion Textured Beach Summer Shirts| Men Stylish Shirt | Men Fancy",cat:"Fashion",sub:"Men",price:499,cut:2195,link:"https://amzn.to/4kC0om4", imgs:["https://m.media-amazon.com/images/I/71dF+pDGxIL._SY741_.jpg","https://m.media-amazon.com/images/I/41uKa5xYPyL.jpg"]},
+{ id:90, name:"Cargo Joggers for Men – Cotton Loose Fit Utility Pants with 6 Pockets | Durable Outdoor & Hiking Trousers",cat:"Fashion",sub:"Men",price:379,cut:1999,link:"https://amzn.to/4kBYPop", imgs:["https://m.media-amazon.com/images/I/611YNQryQHL._SY606_.jpg","https://m.media-amazon.com/images/I/51wGUM5MgZL._SY606_.jpg","https://m.media-amazon.com/images/I/61-ppet7veL._SY606_.jpg"]},
+{ id:91, name:"Women's Cotton Embroidery Straight Short Kurti with Pant Set",cat:"Fashion",sub:"Women",price:1399,cut:1999,link:"https://amzn.to/4ahrRpQ", imgs:["https://m.media-amazon.com/images/I/31tgVWWEzqL.jpg","https://m.media-amazon.com/images/I/41vKGAPrL7L.jpg"]},
+{ id:92, name:"Amazon Brand - Symbol Men Cotton Rich Strechable Terry Knit Pants - Regular Fit",cat:"Fashion",sub:"Men",price:699,cut:1699,link:"https://amzn.to/4aj7dWl", imgs:["https://m.media-amazon.com/images/I/61S-PWGzg9L._SX569_.jpg","https://m.media-amazon.com/images/I/711dwnxo-ML._SX569_.jpg"]},
+{ id:93, name:"Women's Cotton Embroidery A-line Kurti With Palazzo Set",cat:"Fashion",sub:"Women",price:1999,cut:2999,link:"https://amzn.to/407eti6", imgs:["https://m.media-amazon.com/images/I/61M5RP8kJSL._SY741_.jpg","https://m.media-amazon.com/images/I/71BbOR5aIPL._SY741_.jpg"]},
+{ id:94, name:"Men Regular Fit Striped Cotton Shirt Full Sleeves | Casual & Formal Cotton Shirt for Men",cat:"Fashion",sub:"Men",price:699,cut:1999,link:"https://amzn.to/3Mqu35m", imgs:["https://m.media-amazon.com/images/I/61kL4XBZg9L._SY741_.jpg","https://m.media-amazon.com/images/I/81UvraqCHfL._SY741_.jpg"]},
+{ id:95, name:"Peter England Men's Checkered Cotton Shirt | Smart Casual | Full Sleeves",cat:"Fashion",sub:"Men",price:1019,cut:1799,link:"https://amzn.to/3ZCsnJ2", imgs:["https://m.media-amazon.com/images/I/71tVW5vz+DL._SY741_.jpg","https://m.media-amazon.com/images/I/81ceTQaefoL._SY741_.jpg"]},
+{ id:96, name:"styledose Luxury Round Dial in Square case with Ston Studded brecelet Strap Quartz Analogue Wrist Watches for Women's & Girls&Miss&Ladies",cat:"Electronics",sub:"Accessories",price:375,cut:1999,link:"https://amzn.to/40aMo9D", imgs:["https://m.media-amazon.com/images/I/61cD8eMRdqL._SY741_.jpg","https://m.media-amazon.com/images/I/61MvKewbF7L._SY741_.jpg"]},
+{ id:97, name:" Women Block Heel Sandal",cat:"Fashion",sub:"Womens Footwear",price:1174,cut:1990,link:"https://amzn.to/4tCSdKy", imgs:["https://m.media-amazon.com/images/I/61gUbdKhAJL._SY625_.jpg","https://m.media-amazon.com/images/I/6104SxwVOhL._SY625_.jpg","https://m.media-amazon.com/images/I/61Dim87-Y5L._SY625_.jpg"]},
+{ id:98, name:"styledose Luxury Dial with Roman Marker in Diamond Studded Round case with brecelet Strap Stylish Quartz Analogue Wrist Watches for Women's",cat:"Electronics",sub:"Accessories",price:376,cut:1999,link:"https://amzn.to/4rmiNpQ", imgs:["https://m.media-amazon.com/images/I/81bnE7TR8OL._SX679_.jpg","https://m.media-amazon.com/images/I/61qAYo40LnL._SX679_.jpg"]},
+{ id:99, name:"Fire-Boltt Aero TWS Earbuds Custom EQ, Wireless Bluetooth 5.4, Music & App Support, 50H Playtime, Fast Charging Case, 50ms Low Latency for Gaming, Touch Controls, IPX4 Waterproof, Clear Calls - Black",cat:"Electronics",sub:"Accessories",price:799,cut:8999,link:"https://amzn.to/4awIgp7", imgs:["https://m.media-amazon.com/images/I/61IyZTvsfmL._SL1500_.jpg","https://m.media-amazon.com/images/I/71tjvaFzmjL._SL1500_.jpg","https://m.media-amazon.com/images/I/717kXk12qaL._SL1500_.jpg"]},
+{ id:100, name:"kreyam's Earrings for women Chandbali Pearl Jhumka Traditional Combo Set of 12 Pack Fancy Jhumki fashion imitation jewellery",cat:"Fashion",sub:"Accessories",price:299,cut:999,link:"https://amzn.to/40fzIOE", imgs:["https://m.media-amazon.com/images/I/91+gK7XCzxL._SY695_.jpg","https://m.media-amazon.com/images/I/71aMSoDpm0L._SY625_.jpg","https://m.media-amazon.com/images/I/81w2+RDVKFL._SY625_.jpg"]},
+
 ];
 
 let activeCat="For You", activeSub="", searchTerm="";
@@ -672,22 +549,7 @@ function drawSubcats(){
     const paginatedItems = fullList.slice(start, end);
     // यह चेक करने के लिए कि क्या हम विशलिस्ट देख रहे हैं
 let isWishlistPage = list.length < DB_ITEMS.length && wishlist.length > 0 && list.every(p => wishlist.includes(p.id));
-    function removeFromWishlist(id) {
-    // एरे से आइटम हटाएं
-    wishlist = wishlist.filter(itemId => itemId !== id);
     
-    // लोकल स्टोरेज अपडेट करें
-    localStorage.setItem("wishlist", JSON.stringify(wishlist));
-    
-    // स्क्रीन को तुरंत रिफ्रेश करें
-    showWishlist();
-    
-    // अगर विशलिस्ट पूरी खाली हो जाए तो होम पर भेजें (Optional)
-    if(wishlist.length === 0) {
-        alert("Wishlist is empty now!");
-        resetHome();
-    }
-}
 // खाली लिस्ट चेक करें
     if (paginatedItems.length === 0) {
         grid_panel.innerHTML = "<p style='text-align:center; grid-column:1/-1;'>No products found in this category.</p>";
@@ -709,7 +571,7 @@ let isWishlistPage = list.length < DB_ITEMS.length && wishlist.length > 0 && lis
                 <div class="arrow right" onclick="slideImg(${p.id},1)">›</div>
             </div>
             <div class="info-box">
-                <b>${p.name}</b><br>
+                <b style="font-size:13px;">${p.name}</b><br>
                 <span class="price">₹${p.price}</span> <span class="cut">₹${p.cut}</span>
                 <span style="color:green; font-weight:bold; font-size:12px;"> ${discount}% OFF</span>
 <div class="btn-row">
@@ -783,39 +645,18 @@ function slideImg(id,dir){
 function changeCat(c){activeCat=c;activeSub="";drawSubcats();drawProducts();}
 function changeSub(s){activeSub=s;drawProducts();}
 function runSearch(){searchTerm=searchInp.value.toLowerCase();drawProducts();}
-function resetHome(){
-    document.getElementById("accountPage").style.display="none";
-    document.getElementById("loginPage").style.display="none";
-    document.getElementById("mainSection").style.display="block";
-    activeCat="For You"; drawProducts();
-    function displayProducts(filteredItems) {
-    const container = document.getElementById("product_container");
-    container.innerHTML = ""; // पुराने प्रोडक्ट्स साफ़ करें
-
-    if (filteredItems.length === 0) {
-        container.innerHTML = `
-            <div style="text-align: center; padding: 50px; width: 100%;">
-                <img src="https://cdn-icons-png.flaticon.com/512/6134/6134065.png" style="width: 80px; opacity: 0.5;">
-                <p style="color: #666; margin-top: 15px;">ओह! हमें ऐसा कोई प्रोडक्ट नहीं मिला।</p>
-                <button onclick="clearSearch()" style="background: #ff0055; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">सभी डील्स देखें</button>
-            </div>
-        `;
-        return;
-    }
-
-    // बाकी का कोड जो प्रोडक्ट्स दिखाता है...
-    filteredItems.forEach(item => {
-        // ... (आपका पुराना कार्ड जनरेशन कोड)
-    });
-}
-
-function clearSearch() {
-    document.getElementById("search_input").value = "";
+function resetHome() {
+    document.getElementById("accountPage").style.display = "none";
+    document.getElementById("loginPage").style.display = "none";
+    document.getElementById("mainSection").style.display = "block";
+    activeCat = "For You"; 
+    activeSub = ""; 
     searchTerm = "";
-    changeCat(activeCat); // वापस पुरानी कैटेगरी पर जाएँ
+    document.getElementById("searchInp").value = ""; // होम पर आने पर सर्च बार साफ़ हो जाए
+    toggleClearBtn();
+    drawSubcats(); 
+    drawProducts();
 }
-}
-
 /* WISHLIST */
 function addWishlist(id, btnElement) {
     if(!wishlist.includes(id)) {
@@ -876,6 +717,47 @@ function toggleFAQ(element) {
     element.classList.toggle('active');
     let icon = element.querySelector('span');
     icon.innerHTML = element.classList.contains('active') ? '−' : '+';
+}
+const hints = [
+    { text: "Search Mobiles...", color: "#ff0055" }, // गुलाबी
+    { text: "Search Fashion...", color: "#2209c2" }, // नीला
+    { text: "Search Shoes...", color: "#046A38" },   // हरा
+    { text: "Search Watches...", color: "#FF671F" },  // केसरिया
+    { text: "Search Royal Enfield Accessories...", color: "#000000" } // काला
+];
+
+let h = 0;
+setInterval(() => {
+    const inp = document.getElementById("searchInp");
+    if(inp) {
+        // टेक्स्ट बदलें
+        inp.placeholder = hints[h].text;
+        
+        // रंग बदलें (Placeholder का रंग बदलने के लिए CSS वेरिएबल का इस्तेमाल बेस्ट है)
+        inp.style.setProperty("--placeholder-color", hints[h].color);
+        
+        h = (h + 1) % hints.length;
+    }
+}, 3000);
+function showWishlist() {
+    const filtered = DB_ITEMS.filter(p => wishlist.includes(p.id));
+    drawProducts(filtered);
+}
+
+function removeFromWishlist(id) {
+    wishlist = wishlist.filter(itemId => itemId !== id);
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    
+    if(wishlist.length === 0) {
+        alert("Wishlist is empty now!");
+        resetHome();
+    } else {
+        showWishlist(); // लिस्ट अपडेट करें
+    }
+}
+function openDashboard() {
+    // यह आपको सीधे Amazon Associate Central पर ले जाएगा
+    window.open("https://affiliate-program.amazon.in/", "_blank");
 }
 function shareSite() {
     const siteUrl = window.location.href;
@@ -942,7 +824,7 @@ window.onload=()=>{
     if(u) document.getElementById("userTop").innerText=u;
     drawCategories();drawSubcats();drawProducts();
 };
-
 </script>
+<script src="//code.tidio.co/xn5zokyweazdpf9ttdoiy6goj8td6l9p.js" async></script>
 </body>
 </html>

@@ -11,13 +11,13 @@
 <link rel="manifest" href="manifest.json">
 
 <style>
-body{margin:0;font-family:Arial;background:#cac7a5}
+body{margin:0;font-family:Arial;background:#f4f4f4}
 
 /* HEADER */
 header{
 position:fixed;top:0;width:100%;height:65px;z-index:100;
 background:#2209c2;padding:0 15px;
-display:flex;align-items:center;justify-content:space-between;
+display:flex;align-items:center;justify-content:center;gap: 15px;
 }
 header img{height:45px;border-radius:50%;border: 3px solid #f7f3f3}
 .brand-name {
@@ -83,6 +83,47 @@ header img{height:45px;border-radius:50%;border: 3px solid #f7f3f3}
 .faq-answer { padding: 0 15px; max-height: 0; overflow: hidden; transition: 0.3s ease-out; font-size: 14px; color: #000000; }
 .faq-item.active .faq-answer { padding: 15px; max-height: 200px; border-top: 1px solid #eee; }
 
+.pagination-container {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 20px 10px;
+    flex-wrap: wrap; /* मोबाइल पर बटन्स नीचे आ जाएं अगर जगह कम हो */
+}
+
+.pag-nav-btn {
+    padding: 8px 15px;
+    background: #2209c2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.pag-nav-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.pag-num-btn {
+    width: 35px;
+    height: 35px;
+    border: 1px solid #2209c2;
+    background: white;
+    color: #2209c2;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.pag-num-btn.active {
+    background: #ff0055; /* एक्टिव पेज का रंग गुलाबी */
+    color: white;
+    border-color: #ff0055;
+}
 /* AFFILIATE PARTNERS SECTION */
 .partner-section {
     margin-top: 30px;
@@ -114,7 +155,7 @@ header img{height:45px;border-radius:50%;border: 3px solid #f7f3f3}
 
 /* VALENTINE FLIPKART STYLE SECTION */
 .v-container {
-    background: #fff; margin: 10px; border-radius: 10px; overflow: hidden;
+    background: #fff; margin: 0px; border-radius: 10px; overflow: hidden;
     border: 2px solid #eb1115;
 }
 .v-header {
@@ -134,14 +175,14 @@ header img{height:45px;border-radius:50%;border: 3px solid #f7f3f3}
 .v-item p { margin: 5px 0; font-size: 12px; font-weight: bold; color: #d32f2f; }
 
 /* CATEGORY */
-.cat-scroll{display:flex;overflow-x:auto;background:#ffd902;padding:10px;margin:0 10px;border-radius:10px}
-.cat-item{color:rgb(254, 254, 253);;text-align:center;margin-right:10px; font-weight: bold; cursor: pointer;
+.cat-scroll{display:flex;overflow-x:auto;background:#ffd902;padding:5px;margin:0px !important;border-radius:10px;margin-top: 0px;}
+.cat-item{color:rgb(254, 254, 253);;text-align:center;margin-right:10px; font-weight: bold; cursor: pointer; margin-bottom: 0;
 /* --- NEW BORDER STYLE --- */
 border: 1px solid #000; /* Black border */
 padding: 3px 5px;border-radius:3px;background: #ff416c;display:inline-block;
 }
 
-.sub-scroll{display:flex;overflow-x:auto;padding:10px;margin:0 10px}
+.sub-scroll{display:flex;overflow-x:auto;padding:10px;margin:0 px}
 .sub-btn{color:rgb(254, 254, 253);padding:3px 5px;background:#ff0202;border-radius:4px;margin-right:8px; cursor: pointer; border:1px solid #000;}
 
 /* PRODUCTS */
@@ -172,6 +213,7 @@ font-size:18px;cursor:pointer;z-index:5;user-select:none;
 .btn-row{display:flex;gap:5px}
 .btn-row button{ flex:1; border:none; padding:8px; background:#e2de04;font-size:15px;font-weight:900;color:#fff; border-radius:5px; cursor: pointer;/* --- NEW TEXT SHADOW --- */ text-shadow: 2px 2px 4px rgba(0,0,0,0.5);} 
 
+
 /* NAV */
 .bottom-nav{ position: fixed; bottom: 0; width: 100%; display: flex; justify-content: space-around; padding: 5px 0; background: #eafafd; z-index: 100;}
 .bottom-nav div { flex: 1; text-align: center; padding: 10px 0; margin: 5px;font-weight:600; border-radius: 15px; cursor: pointer; border: 2px solid transparent;font-weight: 900;}
@@ -193,6 +235,7 @@ font-size:18px;cursor:pointer;z-index:5;user-select:none;
 <header>
 <img src="https://i.ibb.co/k6Hy4TTP/1770736037665.png">
 <div class="brand-name">DEALKART🛒</div>
+<div style="display:flex;align-items:center;gap:15px;">
 <div id="userTop" onclick="openAccount()">Login</div>
 </header>
 
@@ -208,9 +251,9 @@ font-size:18px;cursor:pointer;z-index:5;user-select:none;
 </div>
 <div class="main" id="mainSection">
    <div class="search-wrapper" style="position: relative;">
-    <input class="search-input" id="searchInp" placeholder="Search products..." onkeyup="toggleClearBtn(); runSearch()">
+    <input class="search-input" id="searchInp" placeholder="Search Products.,mobiles,Fashions,footwears,watches.." onkeyup="toggleClearBtn(); runSearch()">
+    <span id="voiceBtn" onclick="startVoiceSearch()" style="position:absolute; right: 65px; top:50%; transform:translateY(-50%); cursor:pointer; font-size:18px; margin-top: -12px;">🎤</span>
     <span id="clearBtn" onclick="clearSearch()" style="display:none; position:absolute; right:45px; top:50%; transform:translateY(-50%); cursor:pointer; color:#fd0a0a; font-size:18px; font-weight:bold;margin-top:-12px;">✕</span>
-    
     <select id="priceFilter" onchange="drawProducts()">
         <option value="all">Price</option>
         <option value="10-200">₹10-200</option>
@@ -237,7 +280,17 @@ font-size:18px;cursor:pointer;z-index:5;user-select:none;
             <div class="v-item" onclick="openCategory('February Maha Deals')">
                 <img src="https://i.ibb.co/Jjz1MgSn/Screenshot-2026-02-12-15-22-16-468-in-amazon-m-Shop-android-shopping-edit.jpg"><p>Premium Watches <br>Under ₹379</p>
             </div>
-        </div>
+
+</div>
+<div id="timerContainer" style="background: #ffffff; border: 2px dashed #ff0055; padding: 5px; border-radius: 12px; text-align: center; margin: 5px auto; width: 90%; max-width: 300px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-family: sans-serif;">
+    <h4 style="color: #ff0055; margin: 0 0 5px 0; font-size: 18px;">🚀 February Maha Deals!</h4>
+    <p style="font-weight: bold; margin: 0; color: #333; font-size: 14px;">सेल खत्म होने में सिर्फ:</p>
+    
+    <div id="dealTimer" style="font-size: 20px; color: #ff0055; font-weight: 700; letter-spacing: 1px; margin-top: 8px; display: flex; justify-content: center; gap: 5px;">
+        00d 00h 00m 00s
+    </div>
+</div>
+    
     </div>
 
     <div class="cat-scroll" id="cat_panel"></div>
@@ -330,6 +383,10 @@ font-size:18px;cursor:pointer;z-index:5;user-select:none;
     </p>
 </footer>
 
+<button id="scrollTopBtn" onclick="scrollToTop()" style="display:none; position:fixed; bottom:80px; right:20px; z-index:101; background:#ff0055; color:white; border:none; padding:10px 15px; border-radius:50%; font-size:20px; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,0.3);">
+    ↑
+</button>
+ 
 <div id="imgViewer">
   <div id="closeViewer" onclick="closeViewer()" style="position:absolute;top:10px;right:15px;color:#fff;font-size:22px;z-index:101;cursor:pointer;">✖</div>
   <div class="slider" id="viewerSlider" style="height:100vh;"></div>
@@ -353,6 +410,29 @@ function openCategory(catName){
         productSection.scrollIntoView({ behavior: "smooth" });
     }
 }
+// खत्म होने की तारीख: 1 मार्च 2026
+const countdownDate = new Date("March 1, 2026 00:00:00").getTime();
+
+const timerInterval = setInterval(function() {
+    const now = new Date().getTime();
+    const distance = countdownDate - now;
+
+    // दिन, घंटे, मिनट और सेकंड की गणना
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // रिजल्ट को 'dealTimer' वाले span में दिखाना
+    document.getElementById("dealTimer").innerHTML = 
+        days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+    // अगर समय खत्म हो जाए
+    if (distance < 0) {
+        clearInterval(timerInterval);
+        document.getElementById("dealTimer").innerHTML = "OFFER EXPIRED";
+    }
+}, 1000);
 /* DATABASE - ADDED VALENTINE CATEGORY */
 const DB_CATS=[
 {name:"February Maha Deals"},
@@ -481,7 +561,8 @@ imgs:["https://i.ibb.co/Q7W0QZFv/Screenshot-2026-02-12-05-41-17-284-com-ril-ajio
 { id:70, name:"Red Tape Men Pull On Clogs",cat:"Fashion",sub:"Mens Footwear",price:499,cut:2999,link:"https://amzn.to/4qErhaF", imgs:["https://m.media-amazon.com/images/I/61RMzIzWHEL._SY695_.jpg","https://m.media-amazon.com/images/I/61gc+KbrPjL._SY695_.jpg"]},
 { id:71, name:"TRASE Ballet Flats for Women | Comfortable Footwear for Office & Casual Use",cat:"Fashion",sub:"Womens Footwear",price:795,cut:1799,link:"https://amzn.to/465Ufc0", imgs:["https://m.media-amazon.com/images/I/81oBynlxItL._SY625_.jpg","https://m.media-amazon.com/images/I/61VZKNNyY6L._SY625_.jpg"]},
 { id:72, name:"ASIAN Men's TARZAN-04 Casual Sneaker Shoes with Synthetic Upper Lightweight Comfortable Mid Top Sneaker Shoes for Men's & Boy's",cat:"Fashion",sub:"Mens Footwear",price:675,cut:1499,link:"https://amzn.to/4qEYqmu", imgs:["https://m.media-amazon.com/images/I/71dGrejh08L._SY625_.jpg","https://m.media-amazon.com/images/I/61zGnkhEQIL._SY695_.jpg"]},
-{ id:73, name:"Ultra-Comfort Slip-On Clogs for Women | Lightweight, Breathable, Anti-Skid Casual Sandals",cat:"Fashion",sub:"Womens Footwear",price:319,cut:999,link:"https://amzn.to/3ZyRo7V", imgs:["https://m.media-amazon.com/images/I/51VKFzEK9JL._SY695_.jpg","https://m.media-amazon.com/images/I/61eJ5Zyu3sL._SX625_.jpg"]}
+{ id:73, name:"Ultra-Comfort Slip-On Clogs for Women | Lightweight, Breathable, Anti-Skid Casual Sandals",cat:"Fashion",sub:"Womens Footwear",price:319,cut:999,link:"https://amzn.to/3ZyRo7V", imgs:["https://m.media-amazon.com/images/I/51VKFzEK9JL._SY695_.jpg","https://m.media-amazon.com/images/I/61eJ5Zyu3sL._SX625_.jpg"]},
+{ id:74, name:"THE ROYAL WAY Metal Women'S Stylist Analogue Ladies Classic Wrist Watch - Black",cat:"Electronics",sub:"Accessories",price:799,cut:1999,link:"https://amzn.to/3MHdXEs", imgs:["https://m.media-amazon.com/images/I/51k+tNqeOsL.jpg","https://m.media-amazon.com/images/I/51k+tNqeOsL.jpg"]}
 ];
 
 let activeCat="For You", activeSub="", searchTerm="";
@@ -506,6 +587,38 @@ function toggleClearBtn() {
     } else {
         btn.style.display = "none";
     }
+}
+function startVoiceSearch() {
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = 'hi-IN'; // हिंदी और इंग्लिश दोनों समझ लेगा
+
+    const voiceBtn = document.getElementById("voiceBtn");
+    const searchInp = document.getElementById("searchInp");
+
+    recognition.onstart = () => {
+        voiceBtn.innerText = "🛑"; // रिकॉर्डिंग के दौरान बटन बदल जाएगा
+        searchInp.placeholder = "Listening...";
+    };
+
+    recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        searchInp.value = transcript; // जो बोला वो सर्च बार में आ जाएगा
+        toggleClearBtn(); // 'X' बटन दिखाओ
+        runSearch(); // सर्च रन करो
+    };
+
+    recognition.onspeechend = () => {
+        recognition.stop();
+        voiceBtn.innerText = "🎤";
+        searchInp.placeholder = "Search products...";
+    };
+
+    recognition.onerror = (event) => {
+        console.error("Speech Recognition Error: ", event.error);
+        voiceBtn.innerText = "🎤";
+    };
+
+    recognition.start();
 }
 function drawCategories(){
     cat_panel.innerHTML="";
@@ -557,8 +670,25 @@ function drawSubcats(){
     const start = (currentPage - 1) * itemsPerPage;
     const end = start + itemsPerPage;
     const paginatedItems = fullList.slice(start, end);
-
-    // खाली लिस्ट चेक करें
+    // यह चेक करने के लिए कि क्या हम विशलिस्ट देख रहे हैं
+let isWishlistPage = list.length < DB_ITEMS.length && wishlist.length > 0 && list.every(p => wishlist.includes(p.id));
+    function removeFromWishlist(id) {
+    // एरे से आइटम हटाएं
+    wishlist = wishlist.filter(itemId => itemId !== id);
+    
+    // लोकल स्टोरेज अपडेट करें
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    
+    // स्क्रीन को तुरंत रिफ्रेश करें
+    showWishlist();
+    
+    // अगर विशलिस्ट पूरी खाली हो जाए तो होम पर भेजें (Optional)
+    if(wishlist.length === 0) {
+        alert("Wishlist is empty now!");
+        resetHome();
+    }
+}
+// खाली लिस्ट चेक करें
     if (paginatedItems.length === 0) {
         grid_panel.innerHTML = "<p style='text-align:center; grid-column:1/-1;'>No products found in this category.</p>";
         return;
@@ -582,11 +712,13 @@ function drawSubcats(){
                 <b>${p.name}</b><br>
                 <span class="price">₹${p.price}</span> <span class="cut">₹${p.cut}</span>
                 <span style="color:green; font-weight:bold; font-size:12px;"> ${discount}% OFF</span>
-                
 <div class="btn-row">
-    <button onclick="addWishlist(${p.id})">🛒</button>
+ ${isWishlistPage 
+? `<button onclick="removeFromWishlist(${p.id})" style="background:#ff4444;">🗑️</button>` 
+ : `<button onclick="addWishlist(${p.id},this)">🛒</button>`
+                }
     <button onclick="window.open('${p.link}')">BUY</button>
-    <button onclick="shareProduct('${p.name.replace(/'/g, "\\'")}', '${p.link}')" style="flex:1; background:#00d4ff; display:flex; align-items:center; justify-content:center; padding: 5px;">
+    <button onclick="shareProduct('${p.name.replace(/'/g, "\\'")}', '${p.link}', ${p.price}, ${p.cut})" style="flex:1; background:#00d4ff; display:flex; align-items:center; justify-content:center; padding: 5px;">
     <img src="https://i.pinimg.com/originals/b1/a3/09/b1a309b98ed6f4184e3259ac5a31b315.png" style="width:18px; height:18px;">
 </button>
 </div>
@@ -599,25 +731,41 @@ function drawSubcats(){
 
 function renderPaginationButtons(totalItems) {
     const totalPages = Math.ceil(totalItems / itemsPerPage);
-    
-    // अगर पेज 1 से ज़्यादा हैं, तभी बटन दिखाओ
-    if (totalPages <= 1) return; 
+    if (totalPages <= 1) return;
 
-    // बटन दिखाने के लिए HTML जोड़ना
-    grid_panel.innerHTML += `
-        <div style="grid-column: 1 / -1; text-align: center; padding: 20px; display: flex; justify-content: center; gap: 10px;">
-            <button onclick="changePage(-1)" ${currentPage === 1 ? 'disabled' : ''} 
-                style="padding: 10px 20px; background: #2209c2; color: white; border: none; border-radius: 5px;">
-                Back
-            </button>
-            <span style="font-weight: bold; line-height: 40px;">Page ${currentPage} of ${totalPages}</span>
-            <button onclick="changePage(1)" ${currentPage === totalPages ? 'disabled' : ''} 
-                style="padding: 10px 20px; background: #2209c2; color: white; border: none; border-radius: 5px;">
-                Next
-            </button>
-        </div>`;
+    let paginationHtml = `<div class="pagination-container">`;
+
+    // Back बटन
+    paginationHtml += `
+        <button onclick="changePage(-1)" ${currentPage === 1 ? 'disabled' : ''} class="pag-nav-btn">
+            ‹ Back
+        </button>`;
+
+    // पेज नंबर बटन्स
+    for (let i = 1; i <= totalPages; i++) {
+        // अगर बहुत ज्यादा पेज हों तो सिर्फ आस-पास के नंबर दिखाने के लिए (Optional)
+        paginationHtml += `
+            <button onclick="goToPage(${i})" class="pag-num-btn ${currentPage === i ? 'active' : ''}">
+                ${i}
+            </button>`;
+    }
+
+    // Next बटन
+    paginationHtml += `
+        <button onclick="changePage(1)" ${currentPage === totalPages ? 'disabled' : ''} class="pag-nav-btn">
+            Next ›
+        </button>`;
+
+    paginationHtml += `</div>`;
+    grid_panel.innerHTML += paginationHtml;
 }
 
+// किसी खास पेज पर जाने के लिए नया फंक्शन
+function goToPage(pageNumber) {
+    currentPage = pageNumber;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    drawProducts();
+}
 
 // पेज बदलने वाला फंक्शन
 function changePage(step) {
@@ -669,9 +817,26 @@ function clearSearch() {
 }
 
 /* WISHLIST */
-function addWishlist(id){if(!wishlist.includes(id)){wishlist.push(id);localStorage.setItem("wishlist",JSON.stringify(wishlist));alert("Saved to wishlist");}}
-function showWishlist(){drawProducts(DB_ITEMS.filter(p=>wishlist.includes(p.id)));}
+function addWishlist(id, btnElement) {
+    if(!wishlist.includes(id)) {
+        wishlist.push(id);
+        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+        
+        // विजुअल फीडबैक - बटन को हरा और टिक मार्क वाला बनाएं
+        const originalContent = btnElement.innerHTML;
+        btnElement.innerHTML = "✅ Added";
+        btnElement.style.background = "#4CAF50"; // हरा रंग
+        btnElement.style.color = "white";
 
+        // 2 सेकंड बाद वापस पुराना लुक
+        setTimeout(() => {
+            btnElement.innerHTML = "🛒";
+            btnElement.style.background = "#e2de04";
+        }, 2000);
+    } else {
+        alert("Already in wishlist!");
+    }
+}
 /* ACCOUNT & LOGIN FIX */
 function openAccount(){
     let u = localStorage.getItem("customer_name");
@@ -689,7 +854,7 @@ function doLogin(){
     let name = document.getElementById("custName").value.trim();
     if(name===""){alert("Enter name");return;}
     localStorage.setItem("customer_name",name);
-    document.getElementById("userTop").innerText=name;
+    
     openAccount();
 }
 function logout(){localStorage.removeItem("customer_name");location.reload();}
@@ -713,33 +878,62 @@ function toggleFAQ(element) {
     icon.innerHTML = element.classList.contains('active') ? '−' : '+';
 }
 function shareSite() {
+    const siteUrl = window.location.href;
+    const shareBtn = document.querySelector('button[onclick="shareSite()"]');
+    const originalContent = shareBtn.innerHTML;
+
     if (navigator.share) {
         navigator.share({
             title: 'DEALKART - Best Deals 🛒',
-            text: 'Bhai/Bahan, is website par Amazon aur Flipkart ki mast deals mil rahi hain. Ek baar check kar!',
-            url: window.location.href // यह आपकी साइट का असली लिंक अपने आप उठा लेगा
-        }).then(() => {
-            console.log('Thanks for sharing!');
-        }).catch((err) => {
-            console.log('Share cancel ho gaya');
-        });
+            text: 'Bhai, is website par mast deals mil rahi hain!',
+            url: siteUrl
+        }).catch((err) => console.log('Share cancel'));
     } else {
-        // अगर ब्राउज़र शेयर सपोर्ट नहीं करता तो लिंक कॉपी हो जाए
-        navigator.clipboard.writeText(window.location.href);
-        alert("Link Copy ho gaya hai! Ab aap ise kahi bhi paste kar sakte hain.");
+        navigator.clipboard.writeText(siteUrl);
     }
+
+    // विजुअल फीडबैक
+    shareBtn.innerHTML = "✅ Link Copied!";
+    shareBtn.style.background = "#28a745"; // गहरा हरा
+
+    setTimeout(() => {
+        shareBtn.innerHTML = originalContent;
+        shareBtn.style.background = "linear-gradient(45deg, #00ffb3, #00d4ff)";
+    }, 2000);
 }
-function shareProduct(name, link) {
+function shareProduct(name, link, price, cut) {
+    // डिस्काउंट प्रतिशत निकालें
+    let discount = Math.round(((cut - price) / cut) * 100);
+
+    // आपका पसंदीदा मैसेज फॉर्मेट
+    const shareText = `🔥 *DEALKART MAHA DEAL-Zabardast Offers aa gye hain, best products lowest price, special discount + exciting deals!* 🔥\n\n🛍️ *${name}*\n💰 *Price: ₹${price}* (Save ${discount}%)\n\n🔗 *Jaldi link par tap kar ke apni favorite deal grab karo:* `;
+
     if (navigator.share) {
         navigator.share({
             title: 'DEALKART - Best Deals 🛒',
-            text: `In budget dhamaka deals! 🔥\n\n*${name}*\n\nAbhi shopping karein: `,
+            text: shareText,
             url: link
         }).catch((err) => console.log('Share cancel'));
     } else {
-        navigator.clipboard.writeText(`${name} - ${link}`);
-        alert("Link Copy ho gya hai! Ab aap is product ko kahi bhi bhej sakte hain");
+        navigator.clipboard.writeText(`${shareText} ${link}`);
+        alert("Link Copy ho gaya hai! ✅");
     }
+
+}
+
+window.onscroll = function() {
+    let btn = document.getElementById("scrollTopBtn");
+    // जब यूजर 300px नीचे स्क्रॉल करे तो बटन दिखेगा
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        btn.style.display = "block";
+    } else {
+        btn.style.display = "none";
+    }
+};
+
+// ऊपर ले जाने वाला फंक्शन
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 /* ON LOAD */

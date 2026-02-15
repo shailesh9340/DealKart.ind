@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shailesh9340.github.io/DealKart.ind//sitemap.xml

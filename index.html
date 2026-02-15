@@ -7,7 +7,15 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    
+<meta property="og:title" content="DEALKART🛒 - loot lo Maha Dhamaka Deals!">
+<meta property="og:description" content="Amazon और Flipkart ki sabse sasti deal yahan milegi। Earbuds, Fashion और Accessories par 70% tak bhari chhut। Check Now!">
+<meta property="og:image" content="https://i.ibb.co/k6Hy4TTP/1770736037665.png"> <meta property="og:url" content="https://dealkart.ind"> <meta property="og:type" content="website">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DEALKART🛒 - Best Deals in India">
+<meta name="twitter:description" content="Low price me Sabse acchhe products. Aaj ki Top10 Deals dekhein!">
+<meta name="twitter:image" content="https://i.ibb.co/k6Hy4TTP/1770736037665.png">
+
 <link rel="manifest" href="manifest.json">
 
 <style>
@@ -34,7 +42,7 @@ header img{height:45px;border-radius:50%;border: 3px solid #f7f3f3}
 }
 /* Placeholder का रंग एनिमेट करने के लिए */
 #searchInp::placeholder {
-    color: var(--placeholder-color, #999); /* डिफ़ॉल्ट ग्रे रहेगा */
+    color: var(--placeholder-color, #999); /* डिफ़ॉल्ट ग्रे रहेगा */
     transition: color 0.5s ease-in-out;    /* रंग बदलने का स्मूथ एनीमेशन */
     opacity: 1; 
 }
@@ -132,6 +140,8 @@ header img{height:45px;border-radius:50%;border: 3px solid #f7f3f3}
     </select>
 </div>
 
+    <div id="recentBox"></div>
+
     <div class="v-container">
         <div class="v-header">💖 FEBRUARY MAHA DEALS 💖</div>
         <div class="v-scroll">
@@ -212,7 +222,6 @@ header img{height:45px;border-radius:50%;border: 3px solid #f7f3f3}
         <span>🔗</span> Share & Copy Link
     </button>
 </div>
-</div>
 
    <div class="partner-section">
     <h4>Our Affiliate Partners</h4>
@@ -263,8 +272,8 @@ header img{height:45px;border-radius:50%;border: 3px solid #f7f3f3}
 </div>
 
 <script>
-    let currentPage = 1; // अभी कौन सा पेज खुला है
-const itemsPerPage = 20; // एक पेज पर कितने प्रोडक्ट दिखाने हैं
+    let currentPage = 1; 
+const itemsPerPage = 20; 
 
 function openCategory(catName){
     changeCat(catName); 
@@ -274,30 +283,22 @@ function openCategory(catName){
         productSection.scrollIntoView({ behavior: "smooth" });
     }
 }
-// खत्म होने की तारीख: 1 मार्च 2026
 const countdownDate = new Date("March 1, 2026 00:00:00").getTime();
 
 const timerInterval = setInterval(function() {
     const now = new Date().getTime();
     const distance = countdownDate - now;
-
-    // दिन, घंटे, मिनट और सेकंड की गणना
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    // रिजल्ट को 'dealTimer' वाले span में दिखाना
-    document.getElementById("dealTimer").innerHTML = 
-        days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
-    // अगर समय खत्म हो जाए
+    document.getElementById("dealTimer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
     if (distance < 0) {
         clearInterval(timerInterval);
         document.getElementById("dealTimer").innerHTML = "OFFER EXPIRED";
     }
 }, 1000);
-/* DATABASE - ADDED VALENTINE CATEGORY */
+
 const DB_CATS=[
 {name:"February Maha Deals"},
 {name:"For You"},
@@ -308,168 +309,120 @@ const DB_CATS=[
 ];
 
 const DB_ITEMS=[
-/* VALENTINE PRODUCTS */
-
-/* YOUR ORIGINAL PRODUCTS */
-{ id:1,name:"SRGI Men striped Dark blue Premium Shirt",cat:"Fashion",sub:"Men",price:216,cut:1499,link:"https://bitli.in/z93515k",
-imgs:["https://i.ibb.co/NgLCccyj/Screenshot-2026-02-12-05-13-27-853-com-flipkart-shopsy-edit.jpg","https://i.ibb.co/wNhGxZVS/Screenshot-2026-02-12-05-13-49-498-com-flipkart-shopsy-edit.jpg"]},
-{id:2,name:"Comfits Regular Men white jeans",cat:"Fashion",sub:"Men",price:432,cut:1299,link:"https://bitli.in/0SF4kH2",
-imgs:["https://i.ibb.co/Fk096Nvw/Screenshot-2026-02-12-05-24-20-596-com-flipkart-shopsy-edit.jpg","https://i.ibb.co/hxs5cNrW/Screenshot-2026-02-12-05-24-46-058-com-flipkart-shopsy-edit.jpg"]},
-{ id:3,name:"Aksar color block Men T-shirt",cat:"Fashion",sub:"Men",price:238,cut:1499,link:"https://bitli.in/cHSRzij",
-imgs:["https://i.ibb.co/hJ8w3v6P/Screenshot-2026-02-12-05-26-52-071-com-flipkart-shopsy-edit.jpg","https://i.ibb.co/TqcHXByj/Screenshot-2026-02-12-05-27-06-754-com-flipkart-shopsy-edit.jpg"]},
-{id:4,name:"Mark Leurent Men Checkered Casual black premium shirt",cat:"Fashion",sub:"Men",price:200,cut:899,link:"https://bitli.in/W17dQTI",
-imgs:["https://i.ibb.co/d47ypJ62/Screenshot-2026-02-12-05-31-13-541-com-flipkart-shopsy-edit.jpg","https://i.ibb.co/DfdRNrxR/Screenshot-2026-02-12-05-31-27-465-com-flipkart-shopsy-edit.jpg"]},
-{id:5,name:"Men solid Linen cotton shirt  full sleeve",cat:"Fashion",sub:"Men",price:379,cut:1999,link:"https://bitli.in/z67Gh3M",
-imgs:["https://i.ibb.co/qFJcrQvF/Screenshot-2026-02-12-05-58-08-207-in-amazon-m-Shop-android-shopping-edit.jpg","https://i.ibb.co/hF4DYvJB/Screenshot-2026-02-12-05-58-18-625-in-amazon-m-Shop-android-shopping-edit.jpg"]},
-{ id:6,name:"Premium Backpack Encrypted",cat:"Bags",price:322,cut:999,link:"https://bitli.in/JZizUxb",
-imgs:["https://i.ibb.co/gZVV8M7K/Screenshot-2026-01-28-09-16-20-919-com-flipkart-shopsy-edit.jpg","https://i.ibb.co/d0LnRpXs/Screenshot-2026-01-28-09-17-19-979-com-flipkart-shopsy-edit.jpg","https://i.ibb.co/tkxs7w0/IMG-20260128-215957.jpg"]},
-{ id:7,name:"MEN Full sleeve sweatshirt",cat:"Fashion",sub:"Men",price:299,cut:1499,link:"https://fktr.in/trid8uL",
-imgs:["https://i.ibb.co/zH2qJBLK/Screenshot-2026-01-28-23-27-52-532-com-flipkart-android-edit.jpg","https://i.ibb.co/Y9dMqkg/Screenshot-2026-01-28-23-28-05-482-com-flipkart-android-edit.jpg"]},
-{ id:8,name:"Women Floral Kurti",cat:"Fashion",sub:"Women",price:253,cut:1999,link:"https://bitli.in/mYd26le",
-imgs:["https://i.ibb.co/jvnM1DvY/Screenshot-2026-01-28-20-42-57-901-com-flipkart-shopsy-edit.jpg","https://i.ibb.co/dw8Z04GJ/Screenshot-2026-01-28-20-43-10-575-com-flipkart-shopsy-edit.jpg"]},
-{ id:9,name:"Men Regular Fit Trousers",cat:"Fashion",sub:"Men",price:262,cut:999,link:"https://bitli.in/w8hSXkv",
-imgs:["https://i.ibb.co/xKgxySx2/Screenshot-2026-01-28-20-51-16-478-com-flipkart-android-edit.jpg"]},
-{ id:10,name:"men cotton blend shirt & pant",cat:"Fashion",sub:"Men",price:651,cut:1499,link:"https://fktr.in/87AGO3b",
-imgs:["https://i.ibb.co/DD7xqdDg/Screenshot-2026-01-30-01-40-41-023-com-flipkart-android-edit.jpg","https://i.ibb.co/gb0HtCVp/Screenshot-2026-01-30-01-41-11-619-com-flipkart-android-edit.jpg"]},
-{ id:11,name:"REDTAPE Lifestyle sneakers",cat:"Fashion",sub:"Mens Footwear",price:1133,cut:6299,link:"https://fktr.in/RAzpohc",
-imgs:["https://i.ibb.co/r2ng1690/Screenshot-2026-01-31-19-50-24-989-com-flipkart-android-edit.jpg","https://i.ibb.co/twHD626D/Screenshot-2026-01-31-19-51-16-448-com-flipkart-android-edit.jpg"]},
-{ id:12,name:"Women design juti sandal",cat:"Fashion",sub:"Womens Footwear",price:211,cut:999,link:"https://fktr.in/jKEw8ci",
-imgs:["https://i.ibb.co/ymkyjHg4/Screenshot-2026-01-31-20-45-22-254-com-flipkart-android-edit.jpg"]},
-{ id:13,name:"UV protection sunglasses",cat:"Sunglasses",price:169,cut:1640,link:"https://fktr.in/WuDnz8I",
-imgs:["https://i.ibb.co/HL7Bk6Hn/Screenshot-2026-01-31-21-13-30-324-com-flipkart-android-edit.jpg"]},
-{ id:14,name:"Men straight fit jeans",cat:"Fashion",sub:"Men",price:424,cut:2499,link:"https://fktr.in/ikPn8Sb",
-imgs:["https://i.ibb.co/kgjDGfz9/Screenshot-2026-02-10-16-37-50-453-com-flipkart-android-edit.jpg"]},
-{ id:15,name:"Sharara kurti set",cat:"Fashion",sub:"Women",price:464,cut:3999,link:"https://fktr.in/LTCH5Lm",
-imgs:["https://i.ibb.co/6JHDKJRm/Screenshot-2026-02-10-19-31-18-540-com-flipkart-android-edit.jpg","https://i.ibb.co/TqKDf49q/Screenshot-2026-02-10-19-31-29-139-com-flipkart-android-edit.jpg"]},
-{ id:16,name:"Women pure cotton anarkali kurti with dupatta",cat:"Fashion",sub:"Women",price:480,cut:2899,link:"https://fktr.in/sDOinon",
-imgs:["https://i.ibb.co/JR9whV7M/Screenshot-2026-02-10-21-42-47-857-com-flipkart-android-edit.jpg","https://i.ibb.co/GXt1fx5/Screenshot-2026-02-10-21-43-07-006-com-flipkart-android-edit.jpg"]},
-{ id:17,name:"Women cotton blend crop top plazzo ethnic jacket set",cat:"Fashion",sub:"Women",price:638,cut:3699,link:"https://fktr.in/vkW4jM0",
-imgs:["https://i.ibb.co/nG1yxRP/Screenshot-2026-02-10-21-49-53-660-com-flipkart-android-edit.jpg","https://i.ibb.co/W4qSsqvC/Screenshot-2026-02-10-21-50-13-247-com-flipkart-android-edit.jpg"]},
-{ id:18,name:"Men regular fit spread collar casual shirt",cat:"Fashion",sub:"Men",price:291,cut:1499,link:"https://fktr.in/rJZiDtH",
-imgs:["https://i.ibb.co/N6kq0S4H/Screenshot-2026-02-10-22-04-42-213-com-flipkart-android-edit.jpg","https://i.ibb.co/1sZzL2c6/Screenshot-2026-02-10-22-05-01-896-com-flipkart-android-edit.jpg"]},
-{ id:19,name:"Men straight fit black cotton blend trousers",cat:"Fashion",sub:"Men",price:528,cut:1999,link:"https://fktr.in/PMTUi9e",
-imgs:["https://i.ibb.co/Y41Fzbs8/Screenshot-2026-02-10-22-08-27-118-com-flipkart-android-edit.jpg","https://i.ibb.co/m56wjRYH/Screenshot-2026-02-10-22-08-14-130-com-flipkart-android-edit.jpg"]},
-{ id:20,name:"Printed Georgette stiched Gown",cat:"Fashion",sub:"Women",price:467,cut:1799,link:"https://fktr.in/IntJ78t",
-imgs:["https://i.ibb.co/RTYt208m/Screenshot-2026-02-10-22-39-06-063-com-flipkart-android-edit.jpg","https://i.ibb.co/xqNQMcR8/Screenshot-2026-02-10-22-39-20-023-com-flipkart-android-edit.jpg"]},
-/*2nd page products*/
-{ id:21,name:"Women fit and flare full length dress",cat:"Fashion",sub:"Women",price:428,cut:999,link:"https://fktr.in/jW4hIh9",
-imgs:["https://i.ibb.co/XrS31FSb/Screenshot-2026-02-10-22-44-43-250-com-flipkart-android-edit.jpg","https://i.ibb.co/SXmJhQxv/Screenshot-2026-02-10-22-44-56-517-com-flipkart-android-edit.jpg"]},
-{ id:22,name:"Men colourblock Round Neck pure cotton T-shirt",cat:"Fashion",sub:"Men",price:285,cut:999,link:"https://fktr.in/Z6MRv8t",
-imgs:["https://i.ibb.co/4Rn7VV35/Screenshot-2026-02-10-22-51-24-418-com-flipkart-android-edit.jpg","https://i.ibb.co/Y45yHLH9/Screenshot-2026-02-10-22-51-43-891-com-flipkart-android-edit.jpg"]},
-{ id:23,name:"Brown Men sling bag stylish cross body for office & cash & business collection & travels",cat:"Bags",price:238,cut:1299,link:"https://fktr.in/n18j0C6",
-imgs:["https://i.ibb.co/F473vR9N/Screenshot-2026-02-10-22-59-19-457-com-flipkart-android-edit.jpg","https://i.ibb.co/1J6NYGcH/Screenshot-2026-02-10-23-00-00-901-com-flipkart-android-edit.jpg"]},
-{ id:24,name:"Black Men Artificial Jewellery Necklace Arrow Pendant for Boys Black Silver Plated Alloy Chain",cat:"Fashion",sub:"Mens Accessories",price:179,cut:999,link:"https://fktr.in/pFPbwUp",
-imgs:["https://i.ibb.co/NnFTF2MG/Screenshot-2026-02-10-23-04-03-472-com-flipkart-android-edit.jpg","https://i.ibb.co/XfbRpgQv/Screenshot-2026-02-10-23-04-25-173-com-flipkart-android-edit.jpg"]},
-{ id:25,name:"Butterfly Style Hair Clutcher Clips for Women Hair Claw",cat:"Fashion",sub:"Womens Accessories",price:175,cut:999,link:"https://fktr.in/y3mcqRg",
-imgs:["https://i.ibb.co/gZp5mrDQ/Screenshot-2026-02-10-23-09-03-804-com-flipkart-android-edit.jpg" ,"https://i.ibb.co/bR3fymgV/Screenshot-2026-02-10-23-09-13-924-com-flipkart-android-edit.jpg"]},
-{ id:26,name:"Women pink handbag",cat:"Bags",price:329,cut:1899,link:"https://fktr.in/HI1K7lW",
-imgs:["https://i.ibb.co/VWRKTBSB/Screenshot-2026-02-10-23-14-06-245-com-flipkart-android-edit.jpg" , "https://i.ibb.co/0RWmMK4h/Screenshot-2026-02-10-23-13-50-580-com-flipkart-android-edit.jpg"]},
-{ id:27,name:"6 Matte clutcher hair claw clip Mix Square Tshape hair Accessories For Women Hair Claw",cat:"Fashion",sub:"Womens Accessories",price:142,cut:599,link:"https://fktr.in/Oj1f7Qe",
-imgs:["https://i.ibb.co/q6sDDtq/Screenshot-2026-02-10-23-20-16-553-com-flipkart-android-edit.jpg","https://i.ibb.co/mC2L16vP/Screenshot-2026-02-10-23-20-38-812-com-flipkart-android-edit.jpg"]},
-{ id:28,name:"UV Protection Retro Square, Round Sunglasses (Free Size) (For Women, Black)",cat:"Sunglasses",price:151,cut:999,link:"https://fktr.in/i1Pjb56",
-imgs:["https://i.ibb.co/wry6Jnqx/Screenshot-2026-02-10-23-23-03-834-com-flipkart-android-edit.jpg","https://i.ibb.co/YBL56vzJ/Screenshot-2026-02-10-23-23-19-204-com-flipkart-android-edit.jpg"]},
-{ id:29,name:"Women ikat cotton blend anarkali kurta",cat:"Fashion",sub:"Women",price:370,cut:1399,link:"https://fktr.in/6Hzsk4K",
-imgs:["https://i.ibb.co/v4K0Pbzs/Screenshot-2026-02-11-16-34-43-255-com-flipkart-android-edit.jpg","https://i.ibb.co/HTTxJHVh/Screenshot-2026-02-11-16-34-54-726-com-flipkart-android-edit.jpg"]},
-{ id:30,name:"Men slip Fit check spread collar casual shirt",cat:"Fashion",sub:"Men",price:286,cut:1899,link:"https://fktr.in/a6ch2uZ",
-imgs:["https://i.ibb.co/tPBZ4MNV/Screenshot-2026-02-11-16-42-47-326-com-flipkart-android-edit.jpg" ,"https://i.ibb.co/1f1PW9K1/Screenshot-2026-02-11-16-43-02-058-com-flipkart-android-edit.jpg"]},
-{ id:31,name:"Men regular Fit checkered spread collar casual shirt",cat:"Fashion",sub:"Men",price:295,cut:1499,link:"https://fktr.in/Hm441WQ",
-imgs:["https://i.ibb.co/R4t2xGS6/Screenshot-2026-02-11-16-47-42-982-com-flipkart-android-edit.jpg", "https://i.ibb.co/jvH17snr/Screenshot-2026-02-11-16-47-57-277-com-flipkart-android-edit.jpg"]},
-{ id:32,name:"Solid men track suit",cat:"Fashion",sub:"Men",price:603,cut:1999,link:"https://fktr.in/WAr7O6j",
-imgs:["https://i.ibb.co/1GL9BG8R/Screenshot-2026-02-11-16-55-15-589-com-flipkart-android-edit.jpg", "https://ibb.co/xtWpDdN","https://i.ibb.co/YFmz3wx7/Screenshot-2026-02-11-16-55-37-080-com-flipkart-android-edit.jpg"]},
-{ id:33,name:"Brass diamond brass bangle pack of 4",cat:"February Maha Deals",price:180,cut:999,link:"https://fktr.in/lvQn2EN",
-imgs:["https://i.ibb.co/k2gWNR0c/Screenshot-2026-02-10-17-53-11-326-com-flipkart-android-edit.jpg", 
-      "https://i.ibb.co/LXQdDdv4/Screenshot-2026-02-10-17-53-21-079-com-flipkart-android-edit.jpg"]},
-{ id:34,name:"Casual green crystal heart pendant chain for women",cat:"February Maha Deals",price:169,cut:1599,link:"https://fktr.in/JVaMusf",
-imgs:["https://i.ibb.co/WvX18kvq/Screenshot-2026-02-10-18-31-50-761-com-flipkart-android-edit.jpg","https://i.ibb.co/QvHHjr6V/Screenshot-2026-02-10-18-32-04-364-com-flipkart-android-edit.jpg"]},
-{ id:35,name:"Women pink dress",cat:"Fashion",sub:"Women",price:250,cut:1999,link:"https://fktr.in/Tevi8hW",
-imgs:["https://i.ibb.co/ZppM1Mxf/Screenshot-2026-02-10-18-51-22-784-com-flipkart-android-edit.jpg","https://i.ibb.co/fzxZFs4g/Screenshot-2026-02-10-18-52-15-656-com-flipkart-android-edit.jpg"]},
-{ id:36,name:"Men's straight fit Mid raise gray jeans",cat:"Fashion",sub:"Men",price:379,cut:2920,link:"https://fktr.in/29Fpld8",
-imgs:["https://i.ibb.co/0R0pxBb2/Screenshot-2026-02-10-19-16-33-346-com-flipkart-android-edit.jpg","https://i.ibb.co/SDmznvsD/Screenshot-2026-02-10-19-17-10-787-com-flipkart-android-edit.jpg"]},
-{ id:37,name:"Zircon silver plated ring l lifetime plating with 6 months warranty",cat:"February Maha Deals",price:1364,cut:3749,link:"https://fktr.in/5k6AcEy",
-imgs:["https://i.ibb.co/PZWGMj5J/Screenshot-2026-02-10-21-53-59-522-com-flipkart-android-edit.jpg","https://i.ibb.co/wr08n43s/Screenshot-2026-02-10-21-54-23-990-com-flipkart-android-edit.jpg","https://i.ibb.co/rGgcbZpv/Screenshot-2026-02-10-21-54-36-690-com-flipkart-android-edit.jpg"]},
-{id:38,name:"Ananova Men regular fit shirt with mandain collar",cat:"Fashion",sub:"Men",price:426,cut:1373,link:"https://ajiio.in/ZNS2hJQ",
-imgs:["https://i.ibb.co/Q7W0QZFv/Screenshot-2026-02-12-05-41-17-284-com-ril-ajio-edit.jpg","https://i.ibb.co/W4Vnxmsm/Screenshot-2026-02-12-05-42-16-504-com-ril-ajio-edit.jpg"]},
-{ id:39, name:"Matrix antique 2.0 Analog watch for Mens", cat:"February Maha Deals", price:271, cut:1999, link:"https://amzn.to/3OBse62", imgs:["https://i.ibb.co/Q76V7bMc/Screenshot-2026-02-12-15-14-22-411-in-amazon-m-Shop-android-shopping-edit.jpg","https://i.ibb.co/TB1PHt2w/Screenshot-2026-02-12-15-14-51-899-in-amazon-m-Shop-android-shopping-edit.jpg"] },
-{ id:40, name:"Casio enticer Men analog premium watch", cat:"February Maha Deals", price:3995, cut:11999, link:"https://amzn.to/4ku4Zqu", imgs:["https://i.ibb.co/Jjz1MgSn/Screenshot-2026-02-12-15-22-16-468-in-amazon-m-Shop-android-shopping-edit.jpg","https://i.ibb.co/v4qw2YMM/Screenshot-2026-02-12-15-23-07-311-in-amazon-m-Shop-android-shopping-edit.jpg"] },
-/*3rd page products*/
-{ id:41, name:"Minimalist Crono Print Date Dial Rubber Belt Quartz Comfortable for Mens and Boys", cat:"February Maha Deals", price:388, cut:1999, link:"https://amzn.to/4cmdXnF", imgs:["https://i.ibb.co/CKYPmCS8/Screenshot-2026-02-12-15-28-34-387-in-amazon-m-Shop-android-shopping-edit.jpg","https://i.ibb.co/JFBZvyTk/Screenshot-2026-02-12-15-28-53-965-in-amazon-m-shop-android-shopping-edit.jpg"] },
-{ id:42, name:"Analog Date Function Working Adjustable Lock Men Watch (Blue/Silver)", cat:"February Maha Deals", price:419, cut:899, link:"https://amzn.to/4r9RL4J", imgs:["https://i.ibb.co/vvMr2rCz/Screenshot-2026-02-12-15-35-19-491-in-amazon-m-shop-android-shopping-edit.jpg","https://i.ibb.co/MDHcPzHq/Screenshot-Mahadeals-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind.png"] },
-{ id:43, name:"ON TIME OCTUS Analogue Stylish Silver Case Men's Wrist Watch (Green Dial)", cat:"February Maha Deals", price:417, cut:999, link:"https://amzn.to/3OmffFg", imgs:["https://i.ibb.co/4RXsMXFF/Screenshot-Mahadeals-Smartbuy-ind.png","https://i.ibb.co/WbTrYvk/Screenshot-Mahadeals-Smartbuy-ind.png"] },
-{ id:44, name:"TECNICO Desktop Computer Set (i5 -  8GB RAM ,  8GB RAM ,  8GB RAM ,  8GB RAM ,  8GB RAM ,  8GB RAM ,  8GB RAM ,  8GB RAM ,  8GB RAM ,  8GB RAM )", cat:"Electronics", sub:"Desktops", price:14999, cut:49999, link:"https://amzn.to/4tC7uLK", imgs:["https://i.ibb.co/Kz8sFCH7/Screenshot-Mahadeals-Smartbuy-ind.png","https://i.ibb.co/DP7Qz1qG/Screenshot-Mahadeals-Smartbuy-ind.png"] },
-{ id:45, name:"pTron Bassbuds spark in ear TWS earbuds with stereo sounds", cat:"February Maha Deals", price:598, cut:1999, link:"https://amzn.to/3MmqoFC", imgs:["https://i.ibb.co/svDFbFJH/Screenshot-Mahadeals-Smartbuy-ind.png","https://i.ibb.co/pBb61M9W/Screenshot-Mahadeals-Smartbuy-ind.png","https://i.ibb.co/s4B3qfL/Screenshot-Mahadeals-Smartbuy-ind.png"] },
-{ id:46, name:"Boat Airdopes 219, 4Mics ENx 40H Batter,y Best in Segment for Calling, Stream Ad Free Music via App Support TWS Ear Buds Wireless Earphones with mic",cat:"February Maha Deals", sub:"", price:999, cut:3990,link:"https://amzn.to/4bT9skl", imgs:["https://m.media-amazon.com/images/I/61SoMfH -   .jpg","https://m.media-amazon.com/images/I/618coRAQ0kL._SL .jpg"]},
-{ id:47, name:"Shree ADR 2.4GHz 2 in 1 K8 Wireless Microphone, Digital Mini Portable Recording Clip Mic with Receiver for All Type-C Lightning Mobile Phones Camera Laptop for Vlogging",cat:"Electronics", sub:"Accessories", price:299,cut:999,link:"https://amzn.to/3ZzWNLS", imgs:["https://m.media-amazon.com/images/I/51GXcnRczvL._SX679_.jpg","https://m.media-amazon.com/images/I/41jHM04yNHL._SX679_.jpg"]},
-{ id:48, name:"WEET Cotton T-Shirt and Shorts Set for Men,Night Wear for Men,Men's Pyjama Set",cat:"Fashion",sub:"Men",price:949,cut:1999,link:"https://amzn.to/4av4uIm", imgs:["https://m.media-amazon.com/images/I/41hG0Y2PjWL._SY679_.jpg","https://m.media-amazon.com/images/I/61w3r8bo10L._SY679_.jpg"]},
-{ id:49, name:"BULLMER Trendy Regular Fit Printed Causal Shirt for Men",cat:"Fashion",sub:"Men",price:477,cut:1999,link:"https://amzn.to/4tvn1gp", imgs:["https://m.media-amazon.com/images/I/616l-J8iBEL._SY879_.jpg","https://m.media-amazon.com/images/I/61mX1e2tEXL._SY879_.jpg"]},
-{ id:50, name:"SUCHEH Gwalior Men's Reguler Fit Polycotton Trouser Pant's Formal Trouser Casual Trouser Pant",cat:"Fashion",sub:"Men",price:449,cut:1899,link:"https://amzn.to/4tEAz9m", imgs:["https://m.media-amazon.com/images/I/516RCgcfNFL._SX679_.jpg","https://m.media-amazon.com/images/I/51K-cZZ2erL._SX679_.jpg"]},
-{ id:51, name:"ANNI Designer Pure Cotton Embroidered Kurta Set for Women | Rust Orange Kurta with Pants & Dupatta | Floral Neck & Hem Embroidery | Cotton Kurta Set for Women ",cat:"Fashion",sub:"Women",price:799,cut:2999,link:"https://amzn.to/4tv6xVv", imgs:["https://m.media-amazon.com/images/I/51T42aZXalL._SX679_.jpg","https://m.media-amazon.com/images/I/71iJJcx0A-L._SX679_.jpg"]},
-{ id:52, name:"Loose fit Super Soft Track Pants for Man | Track Pant for Men",cat:"Fashion",sub:"Men",price:549,cut:1999,link:"https://amzn.to/464oMqC", imgs:["https://m.media-amazon.com/images/I/6126Scu9p6L._SY879_.jpg","https://m.media-amazon.com/images/I/713cUJappOL._SY879_.jpg"]},
-{ id:53, name:"Anni Designer Pure Cotton Maroon Kurta Pant Set with Dupatta for Women | 3 Piece Gold Hand Block Printed Suit Set | Cotton Kurta Set for Women | Festive Kurti Set",cat:"Fashion",sub:"Women",price:665,cut:2599,link:"https://amzn.to/4rzwnX7", imgs:["https://m.media-amazon.com/images/I/61PHOMhPdCL._SY879_.jpg","https://m.media-amazon.com/images/I/71E+g4U12qL._SX679_.jpg"]},
-{ id:54, name:"Jeans for Men | Denim Pants with Regular Fit & Classic Straight Cut (U11-12)",cat:"Fashion",sub:"Men",price:799,cut:4999,link:"https://amzn.to/4afF8z9", imgs:["https://m.media-amazon.com/images/I/71DjSVa+7rL._SY879_.jpg","https://m.media-amazon.com/images/I/71iViZ6-CML._SY879_.jpg","https://m.media-amazon.com/images/I/715PUtuQ4eL._SY879_.jpg"]},
-{ id:55, name:"KLOSIA Women's Rayon Printed Anarkali Kurta and Pant with Dupatta Set",cat:"Fashion",sub:"Women",price:799,cut:2999,link:"https://amzn.to/3MGPNd9", imgs:["https://m.media-amazon.com/images/I/71I53evweVL._SY879_.jpg","https://m.media-amazon.com/images/I/81k4oaY75aL._SX679_.jpg"]},
-{ id:56, name:"LENSKART BLU | Zero Power Blue Cut Computer Glasses | Gaming Glasses | Anti Glare, Lightweight & Blocks Harmful Rays | UV Protection Specs | Men & Women | Medium | LB E13526",cat:"Sunglasses",price:443,cut:3500,link:"https://amzn.to/4rhGDmA",imgs:["https://m.media-amazon.com/images/I/61ZT+OR-UfL._SX679_.jpg","https://m.media-amazon.com/images/I/61nVOVPMiLL._SX679_.jpg"]},
-{ id:57, name:"Amazon Brand - Symbol Men's Pleated Stretchable Formal Pants |Half-Elasticated | Regular Fit",cat:"Fashion",sub:"Men",price:899,cut:2199,link:"https://amzn.to/4rgnT6X", imgs:["https://m.media-amazon.com/images/I/71Nsoamnz6L._SY879_.jpg,https://m.media-amazon.com/images/I/71MBhzo2eOL._SY879_.jpg"]},
-{ id:58, name:"BRUTON Trendy Shoes Gym Shoes | Sports Shoes | Running Shoes | Exclusive Shoes for Men",cat:"Fashion",sub:"Mens Footwear",price:256,cut:1299,link:"https://amzn.to/4au8lFh", imgs:["https://m.media-amazon.com/images/I/61LJk07g5rL._SY695_.jpg","https://m.media-amazon.com/images/I/81wRD9S957L._SY695_.jpg"]},
-{ id:59, name:"Janasya Women's Pure Cotton Floral Printed A-Line Tunic",cat:"Fashion",sub:"Women",price:749,cut:2999,link:"https://amzn.to/4rR5jlQ", imgs:["https://m.media-amazon.com/images/I/81nLdA6I8sL._SY879_.jpg","https://m.media-amazon.com/images/I/81MuftrGuyL._SY879_.jpg"]},
-{ id:60, name:"VERO MODA Textured Polyester V Neck Women's Top",cat:"Fashion",sub:"Women",price:1040,cut:2599,link:"https://amzn.to/4bUV0Zg", imgs:["https://m.media-amazon.com/images/I/51Xzs9I9kyL._SX679_.jpg","https://m.media-amazon.com/images/I/51ylmSmXHAL._SX679_.jpg"]},
-/*4th page products*/
-{ id:61, name:"VERO MODA Printed Viscose Blend Round Neck Womens Casual Shirt",cat:"Fashion",sub:"Women",price:1120,cut:2799,link:"https://amzn.to/466khfl", imgs:["https://m.media-amazon.com/images/I/61pEMebq1eL._SX679_.jpg","https://m.media-amazon.com/images/I/61m99NP+eDL._SX679_.jpg"]},
-{ id:62, name:"VERO Moda Women Cotton Tie-Up Detail Blouson Top| Puff Sleeves with Gathered Lace Details| Casual Top",cat:"Fashion",sub:"Women",price:1120,cut:2799,link:"https://amzn.to/3Otgh2l", imgs:["https://m.media-amazon.com/images/I/61PfK9+r4OL._SY879_.jpg","https://m.media-amazon.com/images/I/61zdVH6KS+L._SY879_.jpg"]},
-{ id:63, name:"Urbano Fashion Men's Straight Fit Washed Denim Jeans Stretchable",cat:"Fashion",sub:"Men",price:899,cut:2999,link:"https://amzn.to/46QhMOl", imgs:["https://m.media-amazon.com/images/I/61LaQYOv-QL._SY879_.jpg","https://m.media-amazon.com/images/I/71kseWBNDRL._SY879_.jpg","https://m.media-amazon.com/images/I/61i8Ip+MPiL._SY879_.jpg"]},
-{ id:64, name:"Square Hexagonal Sunglasses, UV Protected, Black Frame with Multiple Lens Colors, Unisex, Combo of 2 Sunglasses",cat:"Sunglasses",price:298,cut:1902,link:"https://amzn.to/4qFM8Kt", imgs:["https://m.media-amazon.com/images/I/615BPeqN8WL._SX679_.jpg","https://m.media-amazon.com/images/I/615FYuZbPmL._SX679_.jpg"]},
-{ id:65, name:"Dervin UV Protected Driving Pilot Gradient Square Metal Body Sunglasses for Men and Women",cat:"Sunglasses",price:599,cut:1999,link:"https://amzn.to/4tB1vqh", imgs:["https://m.media-amazon.com/images/I/51z0qqkdApL._SX679_.jpg","https://m.media-amazon.com/images/I/61oBvjVtU8L._SX679_.jpg","https://m.media-amazon.com/images/I/61fnoCSwnpL._SX679_.jpg","https://m.media-amazon.com/images/I/61-vbbJnm4L._SX679_.jpg"]},
-{ id:66, name:"SPARX Mens Sm 4012 Sneaker",cat:"Fashion",sub:"Mens Footwear",price:745,cut:999,link:"https://amzn.to/4rikW5X", imgs:["https://m.media-amazon.com/images/I/61vbkgLDHyL._SY695_.jpg","https://m.media-amazon.com/images/I/7186d430JYL._SY695_.jpg"]},
-{ id:67, name:"Campus Men Og-17 Sneakers",cat:"Fashion",sub:"Mens Footwear",price:789,cut:1599,link:"https://amzn.to/4czOzea", imgs:["https://m.media-amazon.com/images/I/61Zbx2UFt0L._SY695_.jpg","https://m.media-amazon.com/images/I/61MINJaIa0L._SY695_.jpg"]},
-{ id:68, name:"DOCTOR HEALTH SUPER SOFT Men’s Ethnic Flip-Flops | Lightweight, Anti-Skid Comfort Slippers for Men",cat:"Fashion",sub:"Mens Footwear",price:599,cut:2499,link:"https://amzn.to/3Zy0nGn", imgs:["https://m.media-amazon.com/images/I/71XHInxiyQL._SY695_.jpg","https://m.media-amazon.com/images/I/71EUy89iYNL._SY695_.jpg"]},
-{ id:69, name:"Campus Men's Avenue Sneakers",cat:"Fashion",sub:"Mens Footwear",price:999,cut:2799,link:"https://amzn.to/3Othxm5", imgs:["https://m.media-amazon.com/images/I/61zDe9uZOUL._SY695_.jpg","https://m.media-amazon.com/images/I/717YcwJSDlL._SY695_.jpg","https://m.media-amazon.com/images/I/71P4YbzKR0L._SY695_.jpg"]},
-{ id:70, name:"Red Tape Men Pull On Clogs",cat:"Fashion",sub:"Mens Footwear",price:499,cut:2999,link:"https://amzn.to/4qErhaF", imgs:["https://m.media-amazon.com/images/I/61RMzIzWHEL._SY695_.jpg","https://m.media-amazon.com/images/I/61gc+KbrPjL._SY695_.jpg"]},
-{ id:71, name:"TRASE Ballet Flats for Women | Comfortable Footwear for Office & Casual Use",cat:"Fashion",sub:"Womens Footwear",price:795,cut:1799,link:"https://amzn.to/465Ufc0", imgs:["https://m.media-amazon.com/images/I/81oBynlxItL._SY625_.jpg","https://m.media-amazon.com/images/I/61VZKNNyY6L._SY625_.jpg"]},
-{ id:72, name:"ASIAN Men's TARZAN-04 Casual Sneaker Shoes with Synthetic Upper Lightweight Comfortable Mid Top Sneaker Shoes for Men's & Boy's",cat:"Fashion",sub:"Mens Footwear",price:675,cut:1499,link:"https://amzn.to/4qEYqmu", imgs:["https://m.media-amazon.com/images/I/71dGrejh08L._SY625_.jpg","https://m.media-amazon.com/images/I/61zGnkhEQIL._SY695_.jpg"]},
-{ id:73, name:"Ultra-Comfort Slip-On Clogs for Women | Lightweight, Breathable, Anti-Skid Casual Sandals",cat:"Fashion",sub:"Womens Footwear",price:319,cut:999,link:"https://amzn.to/3ZyRo7V", imgs:["https://m.media-amazon.com/images/I/51VKFzEK9JL._SY695_.jpg","https://m.media-amazon.com/images/I/61eJ5Zyu3sL._SX625_.jpg"]},
-{ id:74, name:"THE ROYAL WAY Metal Women'S Stylist Analogue Ladies Classic Wrist Watch - Black",cat:"Electronics",sub:"Accessories",price:799,cut:1999,link:"https://amzn.to/3MHdXEs", imgs:["https://m.media-amazon.com/images/I/51k+tNqeOsL.jpg","https://m.media-amazon.com/images/I/51k+tNqeOsL.jpg"]},
-{ id:75, name:"styledose Luxury Dial in Square case with Ston Studded brecelet Strap Quartz Analogue Wrist Watches for Women's & Girls&Miss&Ladies",cat:"February Maha Deals",price:375,cut:1999,link:"https://amzn.to/3ZWvPOR", imgs:["https://m.media-amazon.com/images/I/61-ELXAXhNL._SX679_.jpg","https://m.media-amazon.com/images/I/61qwqaAba1L._SY741_.jpg"]},
-{ id:76, name:"Symbol Premium Women's Sheath Dress (Knee Length | Desk-to-Dinner) (Available in Plus Sizes)",cat:"Fashion",sub:"Women",price:1199,cut:2999,link:"https://amzn.to/3O9g7x8", imgs:["https://m.media-amazon.com/images/I/61WKip+AQqL._SX569_.jpg","https://m.media-amazon.com/images/I/71fh5H5ZxPL._SX569_.jpg"]},
-{ id:77, name:"WALKAROO Sandal For Womens|Trendy|Light Weight and Comfortable|Soft Footbed|WL7554",cat:"Fashion",sub:"Womens Footwear",price:349,cut:359,link:"https://amzn.to/4rPIyi3", imgs:["https://m.media-amazon.com/images/I/71D2uAZT9EL._SY625_.jpg","https://m.media-amazon.com/images/I/81oSxR5p8LL._SY625_.jpg"]},
-{ id:78, name:"DEELMO Men's Cotton Blend Mandarin Collar Self One Design Full Sleeve Casual Short Kurta",cat:"Fashion",sub:"Men",price:449,cut:2199,link:"https://amzn.to/4rkm215", imgs:["https://m.media-amazon.com/images/I/61P0jlvu1OL._SX679_.jpg","https://m.media-amazon.com/images/I/61jCzelG6XL._SX679_.jpg"]},
-{ id:79, name:"JVX Men Sweatshirts || Sweatshirts for Men || Unisex Hoodie ||Hoodie ||Available in Plus Size (SWEATSHIRT-11)",cat:"Fashion",sub:"Men/Women",price:599,cut:2999,link:"https://amzn.to/4075e1o", imgs:["https://m.media-amazon.com/images/I/51sSJUx8mwL._SY741_.jpg","https://m.media-amazon.com/images/I/61SOAIN5udL._SY741_.jpg"]},
-{ id:80, name:"Men's Comfortable Corduroy Pants | Relaxed Fit Stretch Waist Trousers for Everyday Wear",cat:"Fashion",sub:"Men",price:499,cut:2999,link:"https://amzn.to/4ceCbR1", imgs:["https://m.media-amazon.com/images/I/71EqqfXr8jL._SY741_.jpg","https://m.media-amazon.com/images/I/711+-nejY6L._SY741_.jpg"]},
-{ id:81, name:"MOKOSH Women's Silk Embroidered Kurta Pant Dupatta Set (DM-474)",cat:"Fashion",sub:"Women",price:1323,cut:4999,link:"https://amzn.to/4bRhDO8", imgs:["https://m.media-amazon.com/images/I/61AZSCVB8cL._SY741_.jpg","https://m.media-amazon.com/images/I/71pIABfDSoL._SY741_.jpg"]},
-{ id:82, name:"BULLMER Trendy Clothing Set with Hoodie & Pants Co-ords for Men",cat:"Fashion",sub:"Men",price:819,cut:2998,link:"https://amzn.to/4tzvpLG", imgs:["https://m.media-amazon.com/images/I/51s6QK-gLcL._SY741_.jpg","https://m.media-amazon.com/images/I/51naeVmz+LL._SY741_.jpg"]},
-{ id:83, name:"ANNI Designer Women's Rayon Blend Solid Straight Kurta with Pant & Dupatta",cat:"Fashion",sub:"Women",price:676,cut:2599,link:"https://amzn.to/464FFBB", imgs:["https://m.media-amazon.com/images/I/51suEsggRLL._SX569_.jpg","https://m.media-amazon.com/images/I/810YUES1yHL._SY741_.jpg"]},
-{ id:84, name:"Sidhidata Women's Georgette Digital Printed Ready To Wear one Minute Saree With Unstitched Blouse Piece",cat:"Fashion",sub:"Women",price:988,cut:2998,link:"https://amzn.to/3ZH4P5E", imgs:["https://m.media-amazon.com/images/I/71L7l+xbkmL._SY741_.jpg","https://m.media-amazon.com/images/I/819urgsTSkL._SY741_.jpg"]},
-{ id:85, name:"GRECIILOOKS High Waist Polycotton Trousers for Women – Flared Parachute Pants with Side Pockets | Regular Fit",cat:"Fashion",sub:"Women",price:549,cut:2299,link:"https://amzn.to/4kzoii9", imgs:["https://m.media-amazon.com/images/I/61Kz60FHtmL._SY741_.jpg","https://m.media-amazon.com/images/I/51Ccj0K6LpL._SY741_.jpg"]},
-{ id:86, name:"SWADESI STUFF Men's Stylish Polycotton Regular Fit Chinese Collar Half Sleeve Shirt – Solid Color",cat:"Fashion",sub:"Men",price:358,cut:1499,link:"https://amzn.to/3MByZUO", imgs:["https://m.media-amazon.com/images/I/51Ju4kM4AVL._SX679_.jpg","https://m.media-amazon.com/images/I/51DdU210J4L._SY741_.jpg"]},
-{ id:87, name:"Aahwan Grey Solid High Waist Straight Korean Loose Pleated Wide Leg Trouser for Women's & Girl's",cat:"Fashion",sub:"Women",price:616,cut:1999,link:"https://amzn.to/4ajSBGk", imgs:["https://m.media-amazon.com/images/I/51RzKio94PL._SY741_.jpg","https://m.media-amazon.com/images/I/71ceg1tJktL._SY741_.jpg"]},
-{ id:88, name:"Aahwan Black Printed Square Neck Sleeveless Backless Short Indo-Western Ethnic Kurti Top for Women's & Girl's",cat:"Fashion",sub:"Women",price:469,cut:1999,link:"https://amzn.to/4aj6nJb", imgs:["https://m.media-amazon.com/images/I/61Ypz94u62L._SY741_.jpg","https://m.media-amazon.com/images/I/71s4ApLtLnL._SY741_.jpg"]},
-{ id:89, name:"CB-COLEBROOK Men's Casual Button Down Shirts Long Sleeve Linen Shirt Fashion Textured Beach Summer Shirts| Men Stylish Shirt | Men Fancy",cat:"Fashion",sub:"Men",price:499,cut:2195,link:"https://amzn.to/4kC0om4", imgs:["https://m.media-amazon.com/images/I/71dF+pDGxIL._SY741_.jpg","https://m.media-amazon.com/images/I/41uKa5xYPyL.jpg"]},
-{ id:90, name:"Cargo Joggers for Men – Cotton Loose Fit Utility Pants with 6 Pockets | Durable Outdoor & Hiking Trousers",cat:"Fashion",sub:"Men",price:379,cut:1999,link:"https://amzn.to/4kBYPop", imgs:["https://m.media-amazon.com/images/I/611YNQryQHL._SY606_.jpg","https://m.media-amazon.com/images/I/51wGUM5MgZL._SY606_.jpg","https://m.media-amazon.com/images/I/61-ppet7veL._SY606_.jpg"]},
-{ id:91, name:"Women's Cotton Embroidery Straight Short Kurti with Pant Set",cat:"Fashion",sub:"Women",price:1399,cut:1999,link:"https://amzn.to/4ahrRpQ", imgs:["https://m.media-amazon.com/images/I/31tgVWWEzqL.jpg","https://m.media-amazon.com/images/I/41vKGAPrL7L.jpg"]},
-{ id:92, name:"Amazon Brand - Symbol Men Cotton Rich Strechable Terry Knit Pants - Regular Fit",cat:"Fashion",sub:"Men",price:699,cut:1699,link:"https://amzn.to/4aj7dWl", imgs:["https://m.media-amazon.com/images/I/61S-PWGzg9L._SX569_.jpg","https://m.media-amazon.com/images/I/711dwnxo-ML._SX569_.jpg"]},
-{ id:93, name:"Women's Cotton Embroidery A-line Kurti With Palazzo Set",cat:"Fashion",sub:"Women",price:1999,cut:2999,link:"https://amzn.to/407eti6", imgs:["https://m.media-amazon.com/images/I/61M5RP8kJSL._SY741_.jpg","https://m.media-amazon.com/images/I/71BbOR5aIPL._SY741_.jpg"]},
-{ id:94, name:"Men Regular Fit Striped Cotton Shirt Full Sleeves | Casual & Formal Cotton Shirt for Men",cat:"Fashion",sub:"Men",price:699,cut:1999,link:"https://amzn.to/3Mqu35m", imgs:["https://m.media-amazon.com/images/I/61kL4XBZg9L._SY741_.jpg","https://m.media-amazon.com/images/I/81UvraqCHfL._SY741_.jpg"]},
-{ id:95, name:"Peter England Men's Checkered Cotton Shirt | Smart Casual | Full Sleeves",cat:"Fashion",sub:"Men",price:1019,cut:1799,link:"https://amzn.to/3ZCsnJ2", imgs:["https://m.media-amazon.com/images/I/71tVW5vz+DL._SY741_.jpg","https://m.media-amazon.com/images/I/81ceTQaefoL._SY741_.jpg"]},
-{ id:96, name:"styledose Luxury Round Dial in Square case with Ston Studded brecelet Strap Quartz Analogue Wrist Watches for Women's & Girls&Miss&Ladies",cat:"Electronics",sub:"Accessories",price:375,cut:1999,link:"https://amzn.to/40aMo9D", imgs:["https://m.media-amazon.com/images/I/61cD8eMRdqL._SY741_.jpg","https://m.media-amazon.com/images/I/61MvKewbF7L._SY741_.jpg"]},
-{ id:97, name:" Women Block Heel Sandal",cat:"Fashion",sub:"Womens Footwear",price:1174,cut:1990,link:"https://amzn.to/4tCSdKy", imgs:["https://m.media-amazon.com/images/I/61gUbdKhAJL._SY625_.jpg","https://m.media-amazon.com/images/I/6104SxwVOhL._SY625_.jpg","https://m.media-amazon.com/images/I/61Dim87-Y5L._SY625_.jpg"]},
-{ id:98, name:"styledose Luxury Dial with Roman Marker in Diamond Studded Round case with brecelet Strap Stylish Quartz Analogue Wrist Watches for Women's",cat:"Electronics",sub:"Accessories",price:376,cut:1999,link:"https://amzn.to/4rmiNpQ", imgs:["https://m.media-amazon.com/images/I/81bnE7TR8OL._SX679_.jpg","https://m.media-amazon.com/images/I/61qAYo40LnL._SX679_.jpg"]},
-{ id:99, name:"Fire-Boltt Aero TWS Earbuds Custom EQ, Wireless Bluetooth 5.4, Music & App Support, 50H Playtime, Fast Charging Case, 50ms Low Latency for Gaming, Touch Controls, IPX4 Waterproof, Clear Calls - Black",cat:"Electronics",sub:"Accessories",price:799,cut:8999,link:"https://amzn.to/4awIgp7", imgs:["https://m.media-amazon.com/images/I/61IyZTvsfmL._SL1500_.jpg","https://m.media-amazon.com/images/I/71tjvaFzmjL._SL1500_.jpg","https://m.media-amazon.com/images/I/717kXk12qaL._SL1500_.jpg"]},
-{ id:100, name:"kreyam's Earrings for women Chandbali Pearl Jhumka Traditional Combo Set of 12 Pack Fancy Jhumki fashion imitation jewellery",cat:"Fashion",sub:"Accessories",price:299,cut:999,link:"https://amzn.to/40fzIOE", imgs:["https://m.media-amazon.com/images/I/91+gK7XCzxL._SY695_.jpg","https://m.media-amazon.com/images/I/71aMSoDpm0L._SY625_.jpg","https://m.media-amazon.com/images/I/81w2+RDVKFL._SY625_.jpg"]},
-
+{ id:1,name:"SRGI Men striped Dark blue Premium Shirt",cat:"Fashion",sub:"Men",price:216,cut:1499,link:"https://bitli.in/z93515k",imgs:["https://i.ibb.co/NgLCccyj/Screenshot-2026-02-12-05-13-27-853-com-flipkart-shopsy-edit.jpg","https://i.ibb.co/wNhGxZVS/Screenshot-2026-02-12-05-13-49-498-com-flipkart-shopsy-edit.jpg"]},
+{id:2,name:"Comfits Regular Men white jeans",cat:"Fashion",sub:"Men",price:432,cut:1299,link:"https://bitli.in/0SF4kH2",imgs:["https://i.ibb.co/Fk096Nvw/Screenshot-2026-02-12-05-24-20-596-com-flipkart-shopsy-edit.jpg","https://i.ibb.co/hxs5cNrW/Screenshot-2026-02-12-05-24-46-058-com-flipkart-shopsy-edit.jpg"]},
+{ id:3,name:"Aksar color block Men T-shirt",cat:"Fashion",sub:"Men",price:238,cut:1499,link:"https://bitli.in/cHSRzij",imgs:["https://i.ibb.co/hJ8w3v6P/Screenshot-2026-02-12-05-26-52-071-com-flipkart-shopsy-edit.jpg","https://i.ibb.co/TqcHXByj/Screenshot-2026-02-12-05-27-06-754-com-flipkart-shopsy-edit.jpg"]},
+{id:4,name:"Mark Leurent Men Checkered Casual black premium shirt",cat:"Fashion",sub:"Men",price:200,cut:899,link:"https://bitli.in/W17dQTI",imgs:["https://i.ibb.co/d47ypJ62/Screenshot-2026-02-12-05-31-13-541-com-flipkart-shopsy-edit.jpg","https://i.ibb.co/DfdRNrxR/Screenshot-2026-02-12-05-31-27-465-com-flipkart-shopsy-edit.jpg"]},
+{id:5,name:"Men solid Linen cotton shirt full sleeve",cat:"Fashion",sub:"Men",price:379,cut:1999,link:"https://bitli.in/z67Gh3M",imgs:["https://i.ibb.co/qFJcrQvF/Screenshot-2026-02-12-05-58-08-207-in-amazon-m-Shop-android-shopping-edit.jpg","https://i.ibb.co/hF4DYvJB/Screenshot-2026-02-12-05-58-18-625-in-amazon-m-Shop-android-shopping-edit.jpg"]},
+{ id:6,name:"Premium Backpack Encrypted",cat:"Bags",price:322,cut:999,link:"https://bitli.in/JZizUxb",imgs:["https://i.ibb.co/gZVV8M7K/Screenshot-2026-01-28-09-16-20-919-com-flipkart-shopsy-edit.jpg","https://i.ibb.co/d0LnRpXs/Screenshot-2026-01-28-09-17-19-979-com-flipkart-shopsy-edit.jpg","https://i.ibb.co/tkxs7w0/IMG-20260128-215957.jpg"]},
+{ id:7,name:"MEN Full sleeve sweatshirt",cat:"Fashion",sub:"Men",price:299,cut:1499,link:"https://fktr.in/trid8uL",imgs:["https://i.ibb.co/zH2qJBLK/Screenshot-2026-01-28-23-27-52-532-com-flipkart-android-edit.jpg","https://i.ibb.co/Y9dMqkg/Screenshot-2026-01-28-23-28-05-482-com-flipkart-android-edit.jpg"]},
+{ id:8,name:"Women Floral Kurti",cat:"Fashion",sub:"Women",price:253,cut:1999,link:"https://bitli.in/mYd26le",imgs:["https://i.ibb.co/jvnM1DvY/Screenshot-2026-01-28-20-42-57-901-com-flipkart-shopsy-edit.jpg","https://i.ibb.co/dw8Z04GJ/Screenshot-2026-01-28-20-43-10-575-com-flipkart-shopsy-edit.jpg"]},
+{ id:9,name:"Men Regular Fit Trousers",cat:"Fashion",sub:"Men",price:262,cut:999,link:"https://bitli.in/w8hSXkv",imgs:["https://i.ibb.co/xKgxySx2/Screenshot-2026-01-28-20-51-16-478-com-flipkart-android-edit.jpg"]},
+{ id:10,name:"men cotton blend shirt & pant",cat:"Fashion",sub:"Men",price:651,cut:1499,link:"https://fktr.in/87AGO3b",imgs:["https://i.ibb.co/DD7xqdDg/Screenshot-2026-01-30-01-40-41-023-com-flipkart-android-edit.jpg","https://i.ibb.co/gb0HtCVp/Screenshot-2026-01-30-01-41-11-619-com-flipkart-android-edit.jpg"]},
+{ id:11,name:"REDTAPE Lifestyle sneakers",cat:"Fashion",sub:"Mens Footwear",price:1133,cut:6299,link:"https://fktr.in/RAzpohc",imgs:["https://i.ibb.co/r2ng1690/Screenshot-2026-01-31-19-50-24-989-com-flipkart-android-edit.jpg","https://i.ibb.co/twHD626D/Screenshot-2026-01-31-19-51-16-448-com-flipkart-android-edit.jpg"]},
+{ id:12,name:"Women design juti sandal",cat:"Fashion",sub:"Womens Footwear",price:211,cut:999,link:"https://fktr.in/jKEw8ci",imgs:["https://i.ibb.co/ymkyjHg4/Screenshot-2026-01-31-20-45-22-254-com-flipkart-android-edit.jpg"]},
+{ id:13,name:"UV protection sunglasses",cat:"Sunglasses",price:169,cut:1640,link:"https://fktr.in/WuDnz8I",imgs:["https://i.ibb.co/HL7Bk6Hn/Screenshot-2026-01-31-21-13-30-324-com-flipkart-android-edit.jpg"]},
+{ id:14,name:"Men straight fit jeans",cat:"Fashion",sub:"Men",price:424,cut:2499,link:"https://fktr.in/ikPn8Sb",imgs:["https://i.ibb.co/kgjDGfz9/Screenshot-2026-02-10-16-37-50-453-com-flipkart-android-edit.jpg"]},
+{ id:15,name:"Sharara kurti set",cat:"Fashion",sub:"Women",price:464,cut:3999,link:"https://fktr.in/LTCH5Lm",imgs:["https://i.ibb.co/6JHDKJRm/Screenshot-2026-02-10-19-31-18-540-com-flipkart-android-edit.jpg","https://i.ibb.co/TqKDf49q/Screenshot-2026-02-10-19-31-29-139-com-flipkart-android-edit.jpg"]},
+{ id:16,name:"Women pure cotton anarkali kurti with dupatta",cat:"Fashion",sub:"Women",price:480,cut:2899,link:"https://fktr.in/sDOinon",imgs:["https://i.ibb.co/JR9whV7M/Screenshot-2026-02-10-21-42-47-857-com-flipkart-android-edit.jpg","https://i.ibb.co/GXt1fx5/Screenshot-2026-02-10-21-43-07-006-com-flipkart-android-edit.jpg"]},
+{ id:17,name:"Women cotton blend crop top plazzo ethnic jacket set",cat:"Fashion",sub:"Women",price:638,cut:3699,link:"https://fktr.in/vkW4jM0",imgs:["https://i.ibb.co/nG1yxRP/Screenshot-2026-02-10-21-49-53-660-com-flipkart-android-edit.jpg","https://i.ibb.co/W4qSsqvC/Screenshot-2026-02-10-21-50-13-247-com-flipkart-android-edit.jpg"]},
+{ id:18,name:"Men regular fit spread collar casual shirt",cat:"Fashion",sub:"Men",price:291,cut:1499,link:"https://fktr.in/rJZiDtH",imgs:["https://i.ibb.co/N6kq0S4H/Screenshot-2026-02-10-22-04-42-213-com-flipkart-android-edit.jpg","https://i.ibb.co/1sZzL2c6/Screenshot-2026-02-10-22-05-01-896-com-flipkart-android-edit.jpg"]},
+{ id:19,name:"Men straight fit black cotton blend trousers",cat:"Fashion",sub:"Men",price:528,cut:1999,link:"https://fktr.in/PMTUi9e",imgs:["https://i.ibb.co/Y41Fzbs8/Screenshot-2026-02-10-22-08-27-118-com-flipkart-android-edit.jpg","https://i.ibb.co/m56wjRYH/Screenshot-2026-02-10-22-08-14-130-com-flipkart-android-edit.jpg"]},
+{ id:20,name:"Printed Georgette stiched Gown",cat:"Fashion",sub:"Women",price:467,cut:1799,link:"https://fktr.in/IntJ78t",imgs:["https://i.ibb.co/RTYt208m/Screenshot-2026-02-10-22-39-06-063-com-flipkart-android-edit.jpg","https://i.ibb.co/xqNQMcR8/Screenshot-2026-02-10-22-39-20-023-com-flipkart-android-edit.jpg"]},
+{ id:21,name:"Women fit and flare full length dress",cat:"Fashion",sub:"Women",price:428,cut:999,link:"https://fktr.in/jW4hIh9",imgs:["https://i.ibb.co/XrS31FSb/Screenshot-2026-02-10-22-44-43-250-com-flipkart-android-edit.jpg","https://i.ibb.co/SXmJhQxv/Screenshot-2026-02-10-22-44-56-517-com-flipkart-android-edit.jpg"]},
+{ id:22,name:"Men colourblock Round Neck pure cotton T-shirt",cat:"Fashion",sub:"Men",price:285,cut:999,link:"https://fktr.in/Z6MRv8t",imgs:["https://i.ibb.co/4Rn7VV35/Screenshot-2026-02-10-22-51-24-418-com-flipkart-android-edit.jpg","https://i.ibb.co/Y45yHLH9/Screenshot-2026-02-10-22-51-43-891-com-flipkart-android-edit.jpg"]},
+{ id:23,name:"Brown Men sling bag",cat:"Bags",price:238,cut:1299,link:"https://fktr.in/n18j0C6",imgs:["https://i.ibb.co/F473vR9N/Screenshot-2026-02-10-22-59-19-457-com-flipkart-android-edit.jpg","https://i.ibb.co/1J6NYGcH/Screenshot-2026-02-10-23-00-00-901-com-flipkart-android-edit.jpg"]},
+{ id:24,name:"Arrow Pendant for Boys",cat:"Fashion",sub:"Mens Accessories",price:179,cut:999,link:"https://fktr.in/pFPbwUp",imgs:["https://i.ibb.co/NnFTF2MG/Screenshot-2026-02-10-23-04-03-472-com-flipkart-android-edit.jpg","https://i.ibb.co/XfbRpgQv/Screenshot-2026-02-10-23-04-25-173-com-flipkart-android-edit.jpg"]},
+{ id:25,name:"Butterfly Hair Clutcher",cat:"Fashion",sub:"Womens Accessories",price:175,cut:999,link:"https://fktr.in/y3mcqRg",imgs:["https://i.ibb.co/gZp5mrDQ/Screenshot-2026-02-10-23-09-03-804-com-flipkart-android-edit.jpg" ,"https://i.ibb.co/bR3fymgV/Screenshot-2026-02-10-23-09-13-924-com-flipkart-android-edit.jpg"]},
+{ id:26,name:"Women pink handbag",cat:"Bags",price:329,cut:1899,link:"https://fktr.in/HI1K7lW",imgs:["https://i.ibb.co/VWRKTBSB/Screenshot-2026-02-10-23-14-06-245-com-flipkart-android-edit.jpg" , "https://i.ibb.co/0RWmMK4h/Screenshot-2026-02-10-23-13-50-580-com-flipkart-android-edit.jpg"]},
+{ id:27,name:"6 Matte clutcher set",cat:"Fashion",sub:"Womens Accessories",price:142,cut:599,link:"https://fktr.in/Oj1f7Qe",imgs:["https://i.ibb.co/q6sDDtq/Screenshot-2026-02-10-23-20-16-553-com-flipkart-android-edit.jpg","https://i.ibb.co/mC2L16vP/Screenshot-2026-02-10-23-20-38-812-com-flipkart-android-edit.jpg"]},
+{ id:28,name:"UV Protection Sunglasses",cat:"Sunglasses",price:151,cut:999,link:"https://fktr.in/i1Pjb56",imgs:["https://i.ibb.co/wry6Jnqx/Screenshot-2026-02-10-23-23-03-834-com-flipkart-android-edit.jpg","https://i.ibb.co/YBL56vzJ/Screenshot-2026-02-10-23-23-19-204-com-flipkart-android-edit.jpg"]},
+{ id:29,name:"Women ikat anarkali kurta",cat:"Fashion",sub:"Women",price:370,cut:1399,link:"https://fktr.in/6Hzsk4K",imgs:["https://i.ibb.co/v4K0Pbzs/Screenshot-2026-02-11-16-34-43-255-com-flipkart-android-edit.jpg","https://i.ibb.co/HTTxJHVh/Screenshot-2026-02-11-16-34-54-726-com-flipkart-android-edit.jpg"]},
+{ id:30,name:"Men slip Fit casual shirt",cat:"Fashion",sub:"Men",price:286,cut:1899,link:"https://fktr.in/a6ch2uZ",imgs:["https://i.ibb.co/tPBZ4MNV/Screenshot-2026-02-11-16-42-47-326-com-flipkart-android-edit.jpg" ,"https://i.ibb.co/1f1PW9K1/Screenshot-2026-02-11-16-43-02-058-com-flipkart-android-edit.jpg"]},
+{ id:31,name:"Men checkered casual shirt",cat:"Fashion",sub:"Men",price:295,cut:1499,link:"https://fktr.in/Hm441WQ",imgs:["https://i.ibb.co/R4t2xGS6/Screenshot-2026-02-11-16-47-42-982-com-flipkart-android-edit.jpg", "https://i.ibb.co/jvH17snr/Screenshot-2026-02-11-16-47-57-277-com-flipkart-android-edit.jpg"]},
+{ id:32,name:"Solid men track suit",cat:"Fashion",sub:"Men",price:603,cut:1999,link:"https://fktr.in/WAr7O6j",imgs:["https://i.ibb.co/1GL9BG8R/Screenshot-2026-02-11-16-55-15-589-com-flipkart-android-edit.jpg", "https://ibb.co/xtWpDdN","https://i.ibb.co/YFmz3wx7/Screenshot-2026-02-11-16-55-37-080-com-flipkart-android-edit.jpg"]},
+{ id:33,name:"Brass bangle pack of 4",cat:"February Maha Deals",price:180,cut:999,link:"https://fktr.in/lvQn2EN",imgs:["https://i.ibb.co/k2gWNR0c/Screenshot-2026-02-10-17-53-11-326-com-flipkart-android-edit.jpg", "https://i.ibb.co/LXQdDdv4/Screenshot-2026-02-10-17-53-21-079-com-flipkart-android-edit.jpg"]},
+{ id:34,name:"Heart pendant chain",cat:"February Maha Deals",price:169,cut:1599,link:"https://fktr.in/JVaMusf",imgs:["https://i.ibb.co/WvX18kvq/Screenshot-2026-02-10-18-31-50-761-com-flipkart-android-edit.jpg","https://i.ibb.co/QvHHjr6V/Screenshot-2026-02-10-18-32-04-364-com-flipkart-android-edit.jpg"]},
+{ id:35,name:"Women pink dress",cat:"Fashion",sub:"Women",price:250,cut:1999,link:"https://fktr.in/Tevi8hW",imgs:["https://i.ibb.co/ZppM1Mxf/Screenshot-2026-02-10-18-51-22-784-com-flipkart-android-edit.jpg","https://i.ibb.co/fzxZFs4g/Screenshot-2026-02-10-18-52-15-656-com-flipkart-android-edit.jpg"]},
+{ id:36,name:"Men's gray jeans",cat:"Fashion",sub:"Men",price:379,cut:2920,link:"https://fktr.in/29Fpld8",imgs:["https://i.ibb.co/0R0pxBb2/Screenshot-2026-02-10-19-16-33-346-com-flipkart-android-edit.jpg","https://i.ibb.co/SDmznvsD/Screenshot-2026-02-10-19-17-10-787-com-flipkart-android-edit.jpg"]},
+{ id:37,name:"Zircon silver ring",cat:"February Maha Deals",price:1364,cut:3749,link:"https://fktr.in/5k6AcEy",imgs:["https://i.ibb.co/PZWGMj5J/Screenshot-2026-02-10-21-53-59-522-com-flipkart-android-edit.jpg","https://i.ibb.co/wr08n43s/Screenshot-2026-02-10-21-54-23-990-com-flipkart-android-edit.jpg","https://i.ibb.co/rGgcbZpv/Screenshot-2026-02-10-21-54-36-690-com-flipkart-android-edit.jpg"]},
+{ id:38,name:"Men regular fit shirt",cat:"Fashion",sub:"Men",price:426,cut:1373,link:"https://ajiio.in/ZNS2hJQ",imgs:["https://i.ibb.co/Q7W0QZFv/Screenshot-2026-02-12-05-41-17-284-com-ril-ajio-edit.jpg","https://i.ibb.co/W4Vnxmsm/Screenshot-2026-02-12-05-42-16-504-com-ril-ajio-edit.jpg"]},
+{ id:39, name:"Matrix Analog watch", cat:"February Maha Deals", price:271, cut:1999, link:"https://amzn.to/3OBse62", imgs:["https://i.ibb.co/Q76V7bMc/Screenshot-2026-02-12-15-14-22-411-in-amazon-m-Shop-android-shopping-edit.jpg","https://i.ibb.co/TB1PHt2w/Screenshot-2026-02-12-15-14-51-899-in-amazon-m-Shop-android-shopping-edit.jpg"] },
+{ id:40, name:"Casio premium watch", cat:"February Maha Deals", price:3995, cut:11999, link:"https://amzn.to/4ku4Zqu", imgs:["https://i.ibb.co/Jjz1MgSn/Screenshot-2026-02-12-15-22-16-468-in-amazon-m-Shop-android-shopping-edit.jpg","https://i.ibb.co/v4qw2YMM/Screenshot-2026-02-12-15-23-07-311-in-amazon-m-Shop-android-shopping-edit.jpg"] },
+{ id:41, name:"Minimalist Quartz Watch", cat:"February Maha Deals", price:388, cut:1999, link:"https://amzn.to/4cmdXnF", imgs:["https://i.ibb.co/CKYPmCS8/Screenshot-2026-02-12-15-28-34-387-in-amazon-m-Shop-android-shopping-edit.jpg","https://i.ibb.co/JFBZvyTk/Screenshot-2026-02-12-15-28-53-965-in-amazon-m-shop-android-shopping-edit.jpg"] },
+{ id:42, name:"Adjustable Lock Men Watch", cat:"February Maha Deals", price:419, cut:899, link:"https://amzn.to/4r9RL4J", imgs:["https://i.ibb.co/vvMr2rCz/Screenshot-2026-02-12-15-35-19-491-in-amazon-m-shop-android-shopping-edit.jpg","https://i.ibb.co/MDHcPzHq/Screenshot-Mahadeals-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind-Smartbuy-ind.png"] },
+{ id:43, name:"ON TIME OCTUS Watch", cat:"February Maha Deals", price:417, cut:999, link:"https://amzn.to/3OmffFg", imgs:["https://i.ibb.co/4RXsMXFF/Screenshot-Mahadeals-Smartbuy-ind.png","https://i.ibb.co/WbTrYvk/Screenshot-Mahadeals-Smartbuy-ind.png"] },
+{ id:44, name:"TECNICO Desktop Set", cat:"Electronics", sub:"Desktops", price:14999, cut:49999, link:"https://amzn.to/4tC7uLK", imgs:["https://i.ibb.co/Kz8sFCH7/Screenshot-Mahadeals-Smartbuy-ind.png","https://i.ibb.co/DP7Qz1qG/Screenshot-Mahadeals-Smartbuy-ind.png"] },
+{ id:45, name:"pTron TWS earbuds", cat:"February Maha Deals", price:598, cut:1999, link:"https://amzn.to/3MmqoFC", imgs:["https://i.ibb.co/svDFbFJH/Screenshot-Mahadeals-Smartbuy-ind.png","https://i.ibb.co/pBb61M9W/Screenshot-Mahadeals-Smartbuy-ind.png","https://i.ibb.co/s4B3qfL/Screenshot-Mahadeals-Smartbuy-ind.png"] },
+{ id:46, name:"Boat Airdopes 219",cat:"February Maha Deals", price:999, cut:3990,link:"https://amzn.to/4bT9skl", imgs:["https://m.media-amazon.com/images/I/61SoMfH.jpg","https://m.media-amazon.com/images/I/618coRAQ0kL.jpg"]},
+{ id:47, name:"K8 Wireless Mic",cat:"Electronics", sub:"Accessories", price:299,cut:999,link:"https://amzn.to/3ZzWNLS", imgs:["https://m.media-amazon.com/images/I/51GXcnRczvL.jpg","https://m.media-amazon.com/images/I/41jHM04yNHL.jpg"]},
+{ id:48, name:"WEET T-Shirt Shorts Set",cat:"Fashion",sub:"Men",price:949,cut:1999,link:"https://amzn.to/4av4uIm", imgs:["https://m.media-amazon.com/images/I/41hG0Y2PjWL.jpg","https://m.media-amazon.com/images/I/61w3r8bo10L.jpg"]},
+{ id:49, name:"BULLMER Printed Shirt",cat:"Fashion",sub:"Men",price:477,cut:1999,link:"https://amzn.to/4tvn1gp", imgs:["https://m.media-amazon.com/images/I/616l-J8iBEL.jpg","https://m.media-amazon.com/images/I/61mX1e2tEXL.jpg"]},
+{ id:50, name:"SUCHEH Trouser Pant",cat:"Fashion",sub:"Men",price:449,cut:1899,link:"https://amzn.to/4tEAz9m", imgs:["https://m.media-amazon.com/images/I/516RCgcfNFL.jpg","https://m.media-amazon.com/images/I/51K-cZZ2erL.jpg"]},
+{ id:51, name:"ANNI Designer Kurta Set",cat:"Fashion",sub:"Women",price:799,cut:2999,link:"https://amzn.to/4tv6xVv", imgs:["https://m.media-amazon.com/images/I/51T42aZXalL.jpg","https://m.media-amazon.com/images/I/71iJJcx0A-L.jpg"]},
+{ id:52, name:"Track Pants for Men",cat:"Fashion",sub:"Men",price:549,cut:1999,link:"https://amzn.to/464oMqC", imgs:["https://m.media-amazon.com/images/I/6126Scu9p6L.jpg","https://m.media-amazon.com/images/I/713cUJappOL.jpg"]},
+{ id:53, name:"Maroon Kurta Pant Set",cat:"Fashion",sub:"Women",price:665,cut:2599,link:"https://amzn.to/4rzwnX7", imgs:["https://m.media-amazon.com/images/I/61PHOMhPdCL.jpg","https://m.media-amazon.com/images/I/71E+g4U12qL.jpg"]},
+{ id:54, name:"Classic Denim Jeans",cat:"Fashion",sub:"Men",price:799,cut:4999,link:"https://amzn.to/4afF8z9", imgs:["https://m.media-amazon.com/images/I/71DjSVa+7rL.jpg","https://m.media-amazon.com/images/I/71iViZ6-CML.jpg"]},
+{ id:55, name:"Rayon Printed Kurta",cat:"Fashion",sub:"Women",price:799,cut:2999,link:"https://amzn.to/3MGPNd9", imgs:["https://m.media-amazon.com/images/I/71I53evweVL.jpg","https://m.media-amazon.com/images/I/81k4oaY75aL.jpg"]},
+{ id:56, name:"LENSKART Computer Glasses",cat:"Sunglasses",price:443,cut:3500,link:"https://amzn.to/4rhGDmA",imgs:["https://m.media-amazon.com/images/I/61ZT+OR-UfL.jpg","https://m.media-amazon.com/images/I/61nVOVPMiLL.jpg"]},
+{ id:57, name:"Stretchable Formal Pants",cat:"Fashion",sub:"Men",price:899,cut:2199,link:"https://amzn.to/4rgnT6X", imgs:["https://m.media-amazon.com/images/I/71Nsoamnz6L.jpg","https://m.media-amazon.com/images/I/71MBhzo2eOL.jpg"]},
+{ id:58, name:"BRUTON Sports Shoes",cat:"Fashion",sub:"Mens Footwear",price:256,cut:1299,link:"https://amzn.to/4au8lFh", imgs:["https://m.media-amazon.com/images/I/61LJk07g5rL.jpg","https://m.media-amazon.com/images/I/81wRD9S957L.jpg"]},
+{ id:59, name:"Floral Printed Tunic",cat:"Fashion",sub:"Women",price:749,cut:2999,link:"https://amzn.to/4rR5jlQ", imgs:["https://m.media-amazon.com/images/I/81nLdA6I8sL.jpg","https://m.media-amazon.com/images/I/81MuftrGuyL.jpg"]},
+{ id:60, name:"VERO MODA Top",cat:"Fashion",sub:"Women",price:1040,cut:2599,link:"https://amzn.to/4bUV0Zg", imgs:["https://m.media-amazon.com/images/I/51Xzs9I9kyL.jpg","https://m.media-amazon.com/images/I/51ylmSmXHAL.jpg"]},
+{ id:61, name:"Viscose Casual Shirt",cat:"Fashion",sub:"Women",price:1120,cut:2799,link:"https://amzn.to/466khfl", imgs:["https://m.media-amazon.com/images/I/61pEMebq1eL.jpg","https://m.media-amazon.com/images/I/61m99NP+eDL.jpg"]},
+{ id:62, name:"Tie-Up Blouson Top",cat:"Fashion",sub:"Women",price:1120,cut:2799,link:"https://amzn.to/3Otgh2l", imgs:["https://m.media-amazon.com/images/I/61PfK9+r4OL.jpg","https://m.media-amazon.com/images/I/61zdVH6KS+L.jpg"]},
+{ id:63, name:"Urbano Denim Jeans",cat:"Fashion",sub:"Men",price:899,cut:2999,link:"https://amzn.to/46QhMOl", imgs:["https://m.media-amazon.com/images/I/61LaQYOv-QL.jpg","https://m.media-amazon.com/images/I/71kseWBNDRL.jpg"]},
+{ id:64, name:"Square Sunglasses Combo",cat:"Sunglasses",price:298,cut:1902,link:"https://amzn.to/4qFM8Kt", imgs:["https://m.media-amazon.com/images/I/615BPeqN8WL.jpg","https://m.media-amazon.com/images/I/615FYuZbPmL.jpg"]},
+{ id:65, name:"Driving Pilot Sunglasses",cat:"Sunglasses",price:599,cut:1999,link:"https://amzn.to/4tB1vqh", imgs:["https://m.media-amazon.com/images/I/51z0qqkdApL.jpg","https://m.media-amazon.com/images/I/61oBvjVtU8L.jpg"]},
+{ id:66, name:"SPARX Sneaker",cat:"Fashion",sub:"Mens Footwear",price:745,cut:999,link:"https://amzn.to/4rikW5X", imgs:["https://m.media-amazon.com/images/I/61vbkgLDHyL.jpg","https://m.media-amazon.com/images/I/7186d430JYL.jpg"]},
+{ id:67, name:"Campus OG-17 Sneakers",cat:"Fashion",sub:"Mens Footwear",price:789,cut:1599,link:"https://amzn.to/4czOzea", imgs:["https://m.media-amazon.com/images/I/61Zbx2UFt0L.jpg","https://m.media-amazon.com/images/I/61MINJaIa0L.jpg"]},
+{ id:68, name:"Ethnic Flip-Flops",cat:"Fashion",sub:"Mens Footwear",price:599,cut:2499,link:"https://amzn.to/3Zy0nGn", imgs:["https://m.media-amazon.com/images/I/71XHInxiyQL.jpg","https://m.media-amazon.com/images/I/71EUy89iYNL.jpg"]},
+{ id:69, name:"Campus Avenue Sneakers",cat:"Fashion",sub:"Mens Footwear",price:999,cut:2799,link:"https://amzn.to/3Othxm5", imgs:["https://m.media-amazon.com/images/I/61zDe9uZOUL.jpg","https://m.media-amazon.com/images/I/717YcwJSDlL.jpg"]},
+{ id:70, name:"Red Tape Clogs",cat:"Fashion",sub:"Mens Footwear",price:499,cut:2999,link:"https://amzn.to/4qErhaF", imgs:["https://m.media-amazon.com/images/I/61RMzIzWHEL.jpg","https://m.media-amazon.com/images/I/61gc+KbrPjL.jpg"]},
+{ id:71, name:"TRASE Ballet Flats",cat:"Fashion",sub:"Womens Footwear",price:795,cut:1799,link:"https://amzn.to/465Ufc0", imgs:["https://m.media-amazon.com/images/I/81oBynlxItL.jpg","https://m.media-amazon.com/images/I/61VZKNNyY6L.jpg"]},
+{ id:72, name:"ASIAN Mid Top Sneaker",cat:"Fashion",sub:"Mens Footwear",price:675,cut:1499,link:"https://amzn.to/4qEYqmu", imgs:["https://m.media-amazon.com/images/I/71dGrejh08L.jpg","https://m.media-amazon.com/images/I/61zGnkhEQIL.jpg"]},
+{ id:73, name:"Slip-On Clogs Women",cat:"Fashion",sub:"Womens Footwear",price:319,cut:999,link:"https://amzn.to/3ZyRo7V", imgs:["https://m.media-amazon.com/images/I/51VKFzEK9JL.jpg","https://m.media-amazon.com/images/I/61eJ5Zyu3sL.jpg"]},
+{ id:74, name:"Ladies Classic Watch",cat:"Electronics",sub:"Accessories",price:799,cut:1999,link:"https://amzn.to/3MHdXEs", imgs:["https://m.media-amazon.com/images/I/51k+tNqeOsL.jpg","https://m.media-amazon.com/images/I/51k+tNqeOsL.jpg"]},
+{ id:75, name:"Ston Studded Watch",cat:"February Maha Deals",price:375,cut:1999,link:"https://amzn.to/3ZWvPOR", imgs:["https://m.media-amazon.com/images/I/61-ELXAXhNL.jpg","https://m.media-amazon.com/images/I/61qwqaAba1L.jpg"]},
+{ id:76, name:"Sheath Dress Women",cat:"Fashion",sub:"Women",price:1199,cut:2999,link:"https://amzn.to/3O9g7x8", imgs:["https://m.media-amazon.com/images/I/61WKip+AQqL.jpg","https://m.media-amazon.com/images/I/71fh5H5ZxPL.jpg"]},
+{ id:77, name:"WALKAROO Sandal",cat:"Fashion",sub:"Womens Footwear",price:349,cut:359,link:"https://amzn.to/4rPIyi3", imgs:["https://m.media-amazon.com/images/I/71D2uAZT9EL.jpg","https://m.media-amazon.com/images/I/81oSxR5p8LL.jpg"]},
+{ id:78, name:"Mandarin Collar Kurta",cat:"Fashion",sub:"Men",price:449,cut:2199,link:"https://amzn.to/4rkm215", imgs:["https://m.media-amazon.com/images/I/61P0jlvu1OL.jpg","https://m.media-amazon.com/images/I/61jCzelG6XL.jpg"]},
+{ id:79, name:"Unisex Hoodie",cat:"Fashion",sub:"Men/Women",price:599,cut:2999,link:"https://amzn.to/4075e1o", imgs:["https://m.media-amazon.com/images/I/51sSJUx8mwL.jpg","https://m.media-amazon.com/images/I/61SOAIN5udL.jpg"]},
+{ id:80, name:"Corduroy Pants Men",cat:"Fashion",sub:"Men",price:499,cut:2999,link:"https://amzn.to/4ceCbR1", imgs:["https://m.media-amazon.com/images/I/71EqqfXr8jL.jpg","https://m.media-amazon.com/images/I/711+-nejY6L.jpg"]},
+{ id:81, name:"Silk Embroidered Set",cat:"Fashion",sub:"Women",price:1323,cut:4999,link:"https://amzn.to/4bRhDO8", imgs:["https://m.media-amazon.com/images/I/61AZSCVB8cL.jpg","https://m.media-amazon.com/images/I/71pIABfDSoL.jpg"]},
+{ id:82, name:"Hoodie Pants Co-ords",cat:"Fashion",sub:"Men",price:819,cut:2998,link:"https://amzn.to/4tzvpLG", imgs:["https://m.media-amazon.com/images/I/51s6QK-gLcL.jpg","https://m.media-amazon.com/images/I/51naeVmz+LL.jpg"]},
+{ id:83, name:"Rayon Straight Kurta",cat:"Fashion",sub:"Women",price:676,cut:2599,link:"https://amzn.to/464FFBB", imgs:["https://m.media-amazon.com/images/I/51suEsggRLL.jpg","https://m.media-amazon.com/images/I/810YUES1yHL.jpg"]},
+{ id:84, name:"One Minute Saree",cat:"Fashion",sub:"Women",price:988,cut:2998,link:"https://amzn.to/3ZH4P5E", imgs:["https://m.media-amazon.com/images/I/71L7l+xbkmL.jpg","https://m.media-amazon.com/images/I/819urgsTSkL.jpg"]},
+{ id:85, name:"Flared Parachute Pants",cat:"Fashion",sub:"Women",price:549,cut:2299,link:"https://amzn.to/4kzoii9", imgs:["https://m.media-amazon.com/images/I/61Kz60FHtmL.jpg","https://m.media-amazon.com/images/I/51Ccj0K6LpL.jpg"]},
+{ id:86, name:"Chinese Collar Shirt",cat:"Fashion",sub:"Men",price:358,cut:1499,link:"https://amzn.to/3MByZUO", imgs:["https://m.media-amazon.com/images/I/51Ju4kM4AVL.jpg","https://m.media-amazon.com/images/I/51DdU210J4L.jpg"]},
+{ id:87, name:"Korean Wide Leg Trouser",cat:"Fashion",sub:"Women",price:616,cut:1999,link:"https://amzn.to/4ajSBGk", imgs:["https://m.media-amazon.com/images/I/51RzKio94PL.jpg","https://m.media-amazon.com/images/I/71ceg1tJktL.jpg"]},
+{ id:88, name:"Ethnic Kurti Top",cat:"Fashion",sub:"Women",price:469,cut:1999,link:"https://amzn.to/4aj6nJb", imgs:["https://m.media-amazon.com/images/I/61Ypz94u62L.jpg","https://m.media-amazon.com/images/I/71s4ApLtLnL.jpg"]},
+{ id:89, name:"Linen Button Down Shirt",cat:"Fashion",sub:"Men",price:499,cut:2195,link:"https://amzn.to/4kC0om4", imgs:["https://m.media-amazon.com/images/I/71dF+pDGxIL.jpg","https://m.media-amazon.com/images/I/41uKa5xYPyL.jpg"]},
+{ id:90, name:"Cargo Joggers Men",cat:"Fashion",sub:"Men",price:379,cut:1999,link:"https://amzn.to/4kBYPop", imgs:["https://m.media-amazon.com/images/I/611YNQryQHL.jpg","https://m.media-amazon.com/images/I/51wGUM5MgZL.jpg"]},
+{ id:91, name:"Kurti Pant Set",cat:"Fashion",sub:"Women",price:1399,cut:1999,link:"https://amzn.to/4ahrRpQ", imgs:["https://m.media-amazon.com/images/I/31tgVWWEzqL.jpg","https://m.media-amazon.com/images/I/41vKGAPrL7L.jpg"]},
+{ id:92, name:"Strechable Terry Pants",cat:"Fashion",sub:"Men",price:699,cut:1699,link:"https://amzn.to/4aj7dWl", imgs:["https://m.media-amazon.com/images/I/61S-PWGzg9L.jpg","https://m.media-amazon.com/images/I/711dwnxo-ML.jpg"]},
+{ id:93, name:"Anarkali Palazzo Set",cat:"Fashion",sub:"Women",price:1999,cut:2999,link:"https://amzn.to/407eti6", imgs:["https://m.media-amazon.com/images/I/61M5RP8kJSL.jpg","https://m.media-amazon.com/images/I/71BbOR5aIPL.jpg"]},
+{ id:94, name:"Striped Cotton Shirt",cat:"Fashion",sub:"Men",price:699,cut:1999,link:"https://amzn.to/3Mqu35m", imgs:["https://m.media-amazon.com/images/I/61kL4XBZg9L.jpg","https://m.media-amazon.com/images/I/81UvraqCHfL.jpg"]},
+{ id:95, name:"Peter England Shirt",cat:"Fashion",sub:"Men",price:1019,cut:1799,link:"https://amzn.to/3ZCsnJ2", imgs:["https://m.media-amazon.com/images/I/71tVW5vz+DL.jpg","https://m.media-amazon.com/images/I/81ceTQaefoL.jpg"]},
+{ id:96, name:"Luxury Quartz Watch",cat:"Electronics",sub:"Accessories",price:375,cut:1999,link:"https://amzn.to/40aMo9D", imgs:["https://m.media-amazon.com/images/I/61cD8eMRdqL.jpg","https://m.media-amazon.com/images/I/61MvKewbF7L.jpg"]},
+{ id:97, name:"Block Heel Sandal",cat:"Fashion",sub:"Womens Footwear",price:1174,cut:1990,link:"https://amzn.to/4tCSdKy", imgs:["https://m.media-amazon.com/images/I/61gUbdKhAJL.jpg","https://m.media-amazon.com/images/I/6104SxwVOhL.jpg"]},
+{ id:98, name:"Roman Marker Watch",cat:"Electronics",sub:"Accessories",price:376,cut:1999,link:"https://amzn.to/4rmiNpQ", imgs:["https://m.media-amazon.com/images/I/81bnE7TR8OL.jpg","https://m.media-amazon.com/images/I/61qAYo40LnL.jpg"]},
+{ id:99, name:"Fire-Boltt TWS Earbuds",cat:"Electronics",sub:"Accessories",price:799,cut:8999,link:"https://amzn.to/4awIgp7", imgs:["https://m.media-amazon.com/images/I/61IyZTvsfmL.jpg","https://m.media-amazon.com/images/I/71tjvaFzmjL.jpg"]},
+{ id:100, name:"Pearl Jhumka Combo",cat:"Fashion",sub:"Accessories",price:299,cut:999,link:"https://amzn.to/40fzIOE", imgs:["https://m.media-amazon.com/images/I/91+gK7XCzxL.jpg","https://m.media-amazon.com/images/I/71aMSoDpm0L.jpg"]},
 ];
 
 let activeCat="For You", activeSub="", searchTerm="";
 let wishlist=JSON.parse(localStorage.getItem("wishlist")||"[]");
 
 /* RENDER FUNCTIONS */
-// सर्च इनपुट को साफ़ करने के लिए
 function clearSearch() {
     let input = document.getElementById("searchInp");
-    input.value = ""; // टेक्स्ट मिटाएं
-    toggleClearBtn(); // बटन छुपाएं
-    runSearch(); // लिस्ट रिफ्रेश करें
-    input.focus(); // कर्सर वापस बॉक्स में लाएं
+    input.value = ""; 
+    toggleClearBtn(); 
+    runSearch(); 
+    input.focus(); 
 }
 
-// जब कुछ टाइप हो तभी 'X' बटन दिखाओ
 function toggleClearBtn() {
     let input = document.getElementById("searchInp");
     let btn = document.getElementById("clearBtn");
@@ -481,13 +434,13 @@ function toggleClearBtn() {
 }
 function startVoiceSearch() {
     const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-    recognition.lang = 'hi-IN'; // हिंदी और इंग्लिश दोनों सपोर्ट करेगा
+    recognition.lang = 'hi-IN'; 
 
     const micImg = document.getElementById("micImg");
     const searchInp = document.getElementById("searchInp");
 
     recognition.onstart = () => {
-        micImg.classList.add("mic-active"); // एनीमेशन शुरू
+        micImg.classList.add("mic-active"); 
         searchInp.placeholder = "Speak... 👂";
     };
 
@@ -495,12 +448,12 @@ function startVoiceSearch() {
         const transcript = event.results[0][0].transcript;
         searchInp.value = transcript;
         toggleClearBtn();
-        runSearch(); // आवाज़ से सर्च शुरू
+        runSearch(); 
     };
 
     recognition.onspeechend = () => {
         recognition.stop();
-        micImg.classList.remove("mic-active"); // एनीमेशन बंद
+        micImg.classList.remove("mic-active"); 
         searchInp.placeholder = "🔍 Search Products...";
     };
 
@@ -513,8 +466,6 @@ function startVoiceSearch() {
     recognition.start();
 }
 
-    
-
 function drawCategories(){
     cat_panel.innerHTML="";
     DB_CATS.forEach(c=>{cat_panel.innerHTML+=`<div class="cat-item" onclick="changeCat('${c.name}')">${c.name}</div>`;});
@@ -525,24 +476,17 @@ function drawSubcats(){
     if(f&&f.sub){f.sub.forEach(s=>{sub_panel.innerHTML+=`<div class="sub-btn" onclick="changeSub('${s}')">${s}</div>`;});}
 }
 
-
-    function drawProducts(list = DB_ITEMS) {
+function drawProducts(list = DB_ITEMS) {
     grid_panel.innerHTML = "";
     let priceLimit = document.getElementById("priceFilter").value;
 
-    // --- NEW: Category and Sub-category Filter ---
     let filteredList = list.filter(p => {
-        // अगर 'For You' है तो सब दिखाओ, नहीं तो कैटेगरी मैच करो
         let catMatch = (activeCat === "For You") || (p.cat === activeCat);
-        // अगर सब-कैटेगरी सिलेक्टेड है, तो उसे भी चेक करो
         let subMatch = (activeSub === "") || (p.sub === activeSub);
-        // सर्च टर्म भी चेक करो
         let searchMatch = p.name.toLowerCase().includes(searchTerm);
-        
         return catMatch && subMatch && searchMatch;
     });
 
-    // 1. प्राइस रेंज के हिसाब से मैचिंग प्रोडक्ट्स को अलग करें
     let matchingItems = filteredList.filter(p => {
         if (priceLimit === "all") return true;
         let price = parseFloat(p.price);
@@ -555,20 +499,15 @@ function drawSubcats(){
         return true;
     });
 
-    // 2. बाकी प्रोडक्ट्स (जो सिर्फ कैटेगरी में हैं पर प्राइस रेंज में नहीं)
     let nonMatchingItems = filteredList.filter(p => !matchingItems.includes(p));
-
-    // 3. दोनों को जोड़ें
     let fullList = [...matchingItems, ...nonMatchingItems];
 
-    // 4. Pagination (एक बार में 30 दिखाओ)
     const start = (currentPage - 1) * itemsPerPage;
     const end = start + itemsPerPage;
     const paginatedItems = fullList.slice(start, end);
-    // यह चेक करने के लिए कि क्या हम विशलिस्ट देख रहे हैं
-let isWishlistPage = list.length < DB_ITEMS.length && wishlist.length > 0 && list.every(p => wishlist.includes(p.id));
-    
-// खाली लिस्ट चेक करें
+
+    let isWishlistPage = list.length < DB_ITEMS.length && wishlist.length > 0 && list.every(p => wishlist.includes(p.id));
+
     if (paginatedItems.length === 0) {
         grid_panel.innerHTML = "<p style='text-align:center; grid-column:1/-1;'>No products found in this category.</p>";
         return;
@@ -583,7 +522,7 @@ let isWishlistPage = list.length < DB_ITEMS.length && wishlist.length > 0 && lis
             ${isMatch ? '<span style="position:absolute; top:5px; left:5px; background:green; color:white; padding:2px 7px; border-radius:10px; font-size:10px; z-index:10;">MATCH</span>' : ''}
             <div class="prod-img-box">
                 <div class="slider" id="slider_${p.id}">
-                    ${p.imgs.map(img => `<img src="${img}" onclick='openViewer(${JSON.stringify(p.imgs)})'>`).join("")}
+                    ${p.imgs.map(img => `<img src="${img}" onclick='manageRecent(${p.id}); openViewer(${JSON.stringify(p.imgs)})'>`).join("")}
                 </div>
                 <div class="arrow left" onclick="slideImg(${p.id},-1)">‹</div>
                 <div class="arrow right" onclick="slideImg(${p.id},1)">›</div>
@@ -607,59 +546,38 @@ let isWishlistPage = list.length < DB_ITEMS.length && wishlist.length > 0 && lis
     });
 
     renderPaginationButtons(fullList.length);
-}                             
+}
 
 function renderPaginationButtons(totalItems) {
     const totalPages = Math.ceil(totalItems / itemsPerPage);
     if (totalPages <= 1) return;
-
     let paginationHtml = `<div class="pagination-container">`;
-
-    // Back बटन
-    paginationHtml += `
-        <button onclick="changePage(-1)" ${currentPage === 1 ? 'disabled' : ''} class="pag-nav-btn">
-            ‹ Back
-        </button>`;
-
-    // पेज नंबर बटन्स
+    paginationHtml += `<button onclick="changePage(-1)" ${currentPage === 1 ? 'disabled' : ''} class="pag-nav-btn">‹ Back</button>`;
     for (let i = 1; i <= totalPages; i++) {
-        // अगर बहुत ज्यादा पेज हों तो सिर्फ आस-पास के नंबर दिखाने के लिए (Optional)
-        paginationHtml += `
-            <button onclick="goToPage(${i})" class="pag-num-btn ${currentPage === i ? 'active' : ''}">
-                ${i}
-            </button>`;
+        paginationHtml += `<button onclick="goToPage(${i})" class="pag-num-btn ${currentPage === i ? 'active' : ''}">${i}</button>`;
     }
-
-    // Next बटन
-    paginationHtml += `
-        <button onclick="changePage(1)" ${currentPage === totalPages ? 'disabled' : ''} class="pag-nav-btn">
-            Next ›
-        </button>`;
-
+    paginationHtml += `<button onclick="changePage(1)" ${currentPage === totalPages ? 'disabled' : ''} class="pag-nav-btn">Next ›</button>`;
     paginationHtml += `</div>`;
     grid_panel.innerHTML += paginationHtml;
 }
 
-// किसी खास पेज पर जाने के लिए नया फंक्शन
 function goToPage(pageNumber) {
     currentPage = pageNumber;
     window.scrollTo({ top: 0, behavior: 'smooth' });
     drawProducts();
 }
 
-// पेज बदलने वाला फंक्शन
 function changePage(step) {
     currentPage += step;
-    window.scrollTo(0, 0); // ऊपर ले जाने के लिए
-    drawProducts(); // लिस्ट रिफ्रेश करने के लिए
+    window.scrollTo(0, 0); 
+    drawProducts(); 
 }
-/* FIXING SLIDER ARROWS */
+
 function slideImg(id,dir){
     let s=document.getElementById("slider_"+id);
     s.scrollBy({left:dir*s.clientWidth,behavior:"smooth"});
 }
 
-/* NAVIGATION & SEARCH */
 function changeCat(c){activeCat=c;activeSub="";drawSubcats();drawProducts();}
 function changeSub(s){activeSub=s;drawProducts();}
 function runSearch(){searchTerm=searchInp.value.toLowerCase();drawProducts();}
@@ -670,24 +588,20 @@ function resetHome() {
     activeCat = "For You"; 
     activeSub = ""; 
     searchTerm = "";
-    document.getElementById("searchInp").value = ""; // होम पर आने पर सर्च बार साफ़ हो जाए
+    document.getElementById("searchInp").value = ""; 
     toggleClearBtn();
     drawSubcats(); 
     drawProducts();
 }
-/* WISHLIST */
+
 function addWishlist(id, btnElement) {
     if(!wishlist.includes(id)) {
         wishlist.push(id);
         localStorage.setItem("wishlist", JSON.stringify(wishlist));
-        
-        // विजुअल फीडबैक - बटन को हरा और टिक मार्क वाला बनाएं
         const originalContent = btnElement.innerHTML;
         btnElement.innerHTML = "✅ Added";
-        btnElement.style.background = "#4CAF50"; // हरा रंग
+        btnElement.style.background = "#4CAF50"; 
         btnElement.style.color = "white";
-
-        // 2 सेकंड बाद वापस पुराना लुक
         setTimeout(() => {
             btnElement.innerHTML = "🛒";
             btnElement.style.background = "#e2de04";
@@ -696,7 +610,7 @@ function addWishlist(id, btnElement) {
         alert("Already in wishlist!");
     }
 }
-/* ACCOUNT & LOGIN FIX */
+
 function openAccount(){
     let u = localStorage.getItem("customer_name");
     document.getElementById("mainSection").style.display="none";
@@ -713,19 +627,16 @@ function doLogin(){
     let name = document.getElementById("custName").value.trim();
     if(name===""){alert("Enter name");return;}
     localStorage.setItem("customer_name",name);
-    
     openAccount();
 }
 function logout(){localStorage.removeItem("customer_name");location.reload();}
 
-/* VIEWER */
 function openViewer(imgs){
     viewerSlider.innerHTML=imgs.map(i=>`<img src="${i}" style="width:100%;height:100vh;object-fit:contain;">`).join("");
     document.getElementById("imgViewer").style.display="block";
 }
 function closeViewer(){document.getElementById("imgViewer").style.display="none";}
 
-/* OTHER ACTIONS */
 function donate(){window.location.href="upi://pay?pa=9343988416-4@ybl&pn=Smartbuy Foundation";}
 function openInsta(){window.open("https://instagram.com/dealkart.ind");}
 function openTelegram(){window.open("https://t.me/smartbuyind");}
@@ -734,33 +645,30 @@ function openWhatsapp(){
 }
 function openHelp(){window.location.href="mailto:shaileshkumarchauhan9340@gmail.com";}
 
-/*FAQ*/
 function toggleFAQ(element) {
     element.classList.toggle('active');
     let icon = element.querySelector('span');
     icon.innerHTML = element.classList.contains('active') ? '−' : '+';
 }
+
 const hints = [
-    { text: "Search Mobiles...", color: "#ff0055" }, // गुलाबी
-    { text: "Search Fashion...", color: "#2209c2" }, // नीला
-    { text: "Search Shoes...", color: "#046A38" },   // हरा
-    { text: "Search Watches...", color: "#FF671F" },  // केसरिया
-    { text: "Search Royal Enfield Accessories...", color: "#000000" } // काला
+    { text: "Search Mobiles...", color: "#ff0055" }, 
+    { text: "Search Fashion...", color: "#2209c2" }, 
+    { text: "Search Shoes...", color: "#046A38" },   
+    { text: "Search Watches...", color: "#FF671F" },  
+    { text: "Search Royal Enfield Accessories...", color: "#000000" } 
 ];
 
 let h = 0;
 setInterval(() => {
     const inp = document.getElementById("searchInp");
     if(inp) {
-        // टेक्स्ट बदलें
         inp.placeholder = hints[h].text;
-        
-        // रंग बदलें (Placeholder का रंग बदलने के लिए CSS वेरिएबल का इस्तेमाल बेस्ट है)
         inp.style.setProperty("--placeholder-color", hints[h].color);
-        
         h = (h + 1) % hints.length;
     }
 }, 3000);
+
 function showWishlist() {
     const filtered = DB_ITEMS.filter(p => wishlist.includes(p.id));
     drawProducts(filtered);
@@ -769,23 +677,20 @@ function showWishlist() {
 function removeFromWishlist(id) {
     wishlist = wishlist.filter(itemId => itemId !== id);
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
-    
     if(wishlist.length === 0) {
         alert("Wishlist is empty now!");
         resetHome();
     } else {
-        showWishlist(); // लिस्ट अपडेट करें
+        showWishlist(); 
     }
 }
 function openDashboard() {
-    // यह आपको सीधे Amazon Associate Central पर ले जाएगा
     window.open("https://affiliate-program.amazon.in/", "_blank");
 }
 function shareSite() {
     const siteUrl = window.location.href;
     const shareBtn = document.querySelector('button[onclick="shareSite()"]');
     const originalContent = shareBtn.innerHTML;
-
     if (navigator.share) {
         navigator.share({
             title: 'DEALKART - Best Deals 🛒',
@@ -795,23 +700,16 @@ function shareSite() {
     } else {
         navigator.clipboard.writeText(siteUrl);
     }
-
-    // विजुअल फीडबैक
     shareBtn.innerHTML = "✅ Link Copied!";
-    shareBtn.style.background = "#28a745"; // गहरा हरा
-
+    shareBtn.style.background = "#28a745"; 
     setTimeout(() => {
         shareBtn.innerHTML = originalContent;
         shareBtn.style.background = "linear-gradient(45deg, #00ffb3, #00d4ff)";
     }, 2000);
 }
 function shareProduct(name, link, price, cut) {
-    // डिस्काउंट प्रतिशत निकालें
     let discount = Math.round(((cut - price) / cut) * 100);
-
-    // आपका पसंदीदा मैसेज फॉर्मेट
-    const shareText = `🔥 *DEALKART MAHA DEAL-Zabardast Offers aa gye hain, best products lowest price, special discount + exciting deals!* 🔥\n\n🛍️ *${name}*\n💰 *Price: ₹${price}* (Save ${discount}%)\n\n🔗 *Jaldi link par tap kar ke apni favorite deal grab karo:* `;
-
+    const shareText = `🔥 *DEALKART MAHA DEAL* 🔥\n\n🛍️ *${name}*\n💰 *Price: ₹${price}* (Save ${discount}%)\n\n🔗 *Buy Now:* `;
     if (navigator.share) {
         navigator.share({
             title: 'DEALKART - Best Deals 🛒',
@@ -822,12 +720,40 @@ function shareProduct(name, link, price, cut) {
         navigator.clipboard.writeText(`${shareText} ${link}`);
         alert("Link Copy ho gaya hai! ✅");
     }
+}
 
+// Recently Viewed Functions
+function manageRecent(id) {
+    let list = JSON.parse(localStorage.getItem("myRecent") || "[]");
+    list = [id, ...list.filter(x => x !== id)].slice(0, 6);
+    localStorage.setItem("myRecent", JSON.stringify(list));
+    showRecent();
+}
+
+function showRecent() {
+    let ids = JSON.parse(localStorage.getItem("myRecent") || "[]");
+    let box = document.getElementById("recentBox");
+    if (ids.length === 0) return;
+
+    if (!box) {
+        box = document.createElement("div");
+        box.id = "recentBox";
+        let mainSection = document.getElementById("mainSection");
+        mainSection.insertBefore(box, mainSection.children[1]); 
+    }
+
+    let html = ids.map(id => {
+        let p = DB_ITEMS.find(i => i.id === id);
+        return p ? `<div class="v-item" onclick="window.open('${p.link}')"><img src="${p.imgs[0]}"><p style="font-size:11px;">₹${p.price}</p></div>` : "";
+    }).join("");
+
+    box.innerHTML = `<div class="v-container" style="border:2px solid #2209c2; margin-bottom:15px; margin-top:10px;">
+        <div class="v-header" style="background:#2209c2;">RECENTLY VIEWED</div>
+        <div class="v-scroll">${html}</div></div>`;
 }
 
 window.onscroll = function() {
     let btn = document.getElementById("scrollTopBtn");
-    // जब यूजर 300px नीचे स्क्रॉल करे तो बटन दिखेगा
     if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
         btn.style.display = "block";
     } else {
@@ -835,11 +761,11 @@ window.onscroll = function() {
     }
 };
 
-// ऊपर ले जाने वाला फंक्शन
 function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-    if ('serviceWorker' in navigator) {
+
+if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/service-worker.js')
             .then(reg => console.log('Service Worker Registered! ✅'))
@@ -851,7 +777,10 @@ function scrollToTop() {
 window.onload=()=>{
     let u=localStorage.getItem("customer_name");
     if(u) document.getElementById("userTop").innerText=u;
-    drawCategories();drawSubcats();drawProducts();
+    drawCategories();
+    drawSubcats();
+    drawProducts();
+    showRecent(); 
 };
 </script>
 <script src="//code.tidio.co/xn5zokyweazdpf9ttdoiy6goj8td6l9p.js" async></script>

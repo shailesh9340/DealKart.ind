@@ -851,7 +851,7 @@ if ('serviceWorker' in navigator) {
 window.onload=()=>{
     let u=localStorage.getItem("customer_name");
     if(u) document.getElementById("userTop").innerText=u;
-    drawCategories();
+    drawCategories();showRecommendationSection();
     drawSubcats();
     drawProducts();
     showRecent(); 

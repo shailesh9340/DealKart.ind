@@ -783,6 +783,47 @@ function showDiscountPopup() {
     `;
     document.body.appendChild(overlay);
 }
+    function getSmartRecommendations() {
+    let recentIds = JSON.parse(localStorage.getItem("myRecent") || "[]");
+    if (recentIds.length === 0) return [];
+
+    // Pehle user ne jo dekha uski category nikalein
+    let lastViewedProduct = DB_ITEMS.find(p => p.id === recentIds[0]);
+    if (!lastViewedProduct) return [];
+
+    // Usi category ke dusre products recommend karein (excluding current one)
+    let recommendations = DB_ITEMS.filter(p => 
+        p.cat === lastViewedProduct.cat && 
+        !recentIds.includes(p.id)
+    ).slice(0, 4);
+
+    return recommendations;
+}
+
+// Is function ko drawProducts ke niche call karein taki recommendation section dikhe
+function showRecommendationSection() {
+    let recs = getSmartRecommendations();
+    if (recs.length === 0) return;
+
+    let recBox = document.createElement("div");
+    recBox.className = "v-container";
+    recBox.style.border = "2px solid #ff0055";
+    recBox.style.marginTop = "20px";
+
+    let html = recs.map(p => `
+        <div class="v-item" onclick="window.open('${p.link}')">
+            <img src="${p.imgs[0]}">
+            <p style="font-size:11px;">Recommended<br>₹${p.price}</p>
+        </div>
+    `).join("");
+
+    recBox.innerHTML = `
+        <div class="v-header" style="background:#ff0055;">SPECIAL FOR YOU 🔥</div>
+        <div class="v-scroll">${html}</div>`;
+    
+    document.getElementById("grid_panel").after(recBox);
+}
+
 
 
 window.onscroll = function() {

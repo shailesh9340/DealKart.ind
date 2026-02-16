@@ -770,10 +770,12 @@ setTimeout(() => {
         showDiscountPopup();
     }
 }, 15000); // 15 seconds ka delay
-
 function showDiscountPopup() {
     sessionStorage.setItem('offerShown', 'true');
     
+    // User ka naam localStorage se nikalne ke liye
+    let userName = localStorage.getItem("customer_name") || "Guest"; 
+
     let overlay = document.createElement("div");
     overlay.style = "position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:2000; display:flex; align-items:center; justify-content:center; padding:20px; backdrop-filter: blur(5px);";
     
@@ -782,7 +784,9 @@ function showDiscountPopup() {
             <span onclick="this.parentElement.parentElement.remove()" style="position:absolute; top:10px; right:15px; cursor:pointer; font-size:24px; font-weight:bold; color:#333;">×</span>
             
             <div style="font-size: 50px; margin-bottom: 10px;">🎁</div>
-            <h2 style="color:#ff0055; margin:0; font-family: 'Arial Black', sans-serif;">WAIT, SHAILLESH!</h2>
+            <h2 style="color:#ff0055; margin:0; font-family: 'Arial Black', sans-serif; text-transform: uppercase;">
+                WAIT, ${userName}!
+            </h2>
             <p style="color:#333; font-size: 16px; font-weight: bold; margin: 15px 0;">Special Offer Sirf Aapke Liye!</p>
             <p style="color:#666; font-size: 14px;">Aaj ki <b>Maha Deals</b> mein Earbuds par 70% tak off hai. Miss mat kijiye!</p>
             
@@ -794,6 +798,7 @@ function showDiscountPopup() {
     `;
     document.body.appendChild(overlay);
 }
+
 
     function getSmartRecommendations() {
     let recentIds = JSON.parse(localStorage.getItem("myRecent") || "[]");

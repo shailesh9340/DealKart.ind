@@ -755,6 +755,35 @@ function showRecent() {
         <div class="v-header" style="background:#2209c2;">RECENTLY VIEWED</div>
         <div class="v-scroll">${html}</div></div>`;
 }
+    // Exit Intent Logic
+document.addEventListener("mouseleave", function(e) {
+    // Agar mouse screen ke upar (close button ki taraf) jata hai
+    if (e.clientY < 0 && !sessionStorage.getItem('offerShown')) {
+        showDiscountPopup();
+    }
+});
+
+function showDiscountPopup() {
+    sessionStorage.setItem('offerShown', 'true');
+    
+    // Ek simple overlay aur box create karna
+    let overlay = document.createElement("div");
+    overlay.style = "position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:1000; display:flex; align-items:center; justify-content:center; padding:20px;";
+    
+    overlay.innerHTML = `
+        <div style="background:white; padding:30px; border-radius:15px; text-align:center; max-width:400px; position:relative;">
+            <span onclick="this.parentElement.parentElement.remove()" style="position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold;">✕</span>
+            <h2 style="color:#ff0055; margin:0;">RUKIYE! 🎁</h2>
+            <p style="color:#333;">Kya aapne aaj ki <b>Maha Deal</b> dekhi? Earbuds par 70% off chal raha hai!</p>
+            <button onclick="openCategory('February Maha Deals'); this.parentElement.parentElement.remove();" 
+                    style="background:#2209c2; color:white; border:none; padding:12px 25px; border-radius:8px; font-weight:bold; cursor:pointer;">
+                DEALS DEKHEIN
+            </button>
+        </div>
+    `;
+    document.body.appendChild(overlay);
+}
+
 
 window.onscroll = function() {
     let btn = document.getElementById("scrollTopBtn");

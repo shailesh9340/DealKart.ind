@@ -654,6 +654,19 @@ function toggleFAQ(element) {
     let icon = element.querySelector('span');
     icon.innerHTML = element.classList.contains('active') ? '−' : '+';
 }
+    function sendTelegramDeal(product){
+ fetch("8589255866:AAFL6Rc_B_yydw4SGlIvFxru_qHLoutgDXk",{
+  method:"POST",
+  headers:{"Content-Type":"application/json"},
+  body:JSON.stringify({
+   chat_id:"@DealKart.ind",
+   text:`🔥 New Deal:
+${product.name}
+₹${product.price}
+👉 ${product.link}`
+  })
+ });
+    }
 
 const hints = [
     { text: "Search Mobiles...", color: "#ff0055" }, 
